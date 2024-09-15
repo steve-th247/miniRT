@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.h                                           :+:      :+:    :+:   */
+/*   obj.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 19:03:59 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/14 18:16:47 by jyap             ###   ########.fr       */
+/*   Created: 2024/09/14 16:44:40 by jyap              #+#    #+#             */
+/*   Updated: 2024/09/15 12:15:49 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#ifndef OBJ_H
+# define OBJ_H
 
-# include "vect.h"
-
-typedef struct s_camera
+typedef enum e_obj_type
 {
-	int				i;
-	t_vect			pos;
-	t_vect			norm;
-	unsigned char	fov_deg;
-}	t_camera;
+	PLANE = 1,
+	SPHERE = 2,
+	CYLINDER = 3
+} t_obj_type;
 
-t_camera	camera(t_vect pos, t_vect norm, unsigned char fov_deg);
-t_camera	*create_camera(t_vect pos, t_vect norm, unsigned char fov_deg);
-void		delete_camera(t_camera *ptr_camera);
+typedef struct s_obj
+{
+	int					i;
+	t_obj_type			type;
+	void				*obj_ptr;
+	struct s_obj		*next;
+}	t_obj;
 
 #endif

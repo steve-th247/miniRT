@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.h                                           :+:      :+:    :+:   */
+/*   mlx_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 19:03:59 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/14 18:16:47 by jyap             ###   ########.fr       */
+/*   Created: 2024/09/14 16:57:24 by jyap              #+#    #+#             */
+/*   Updated: 2024/09/15 10:57:54 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#ifndef MLX_STRUCTS_H
+# define MLX_STRUCTS_H
+#include "scene.h"
 
-# include "vect.h"
-
-typedef struct s_camera
+typedef struct s_image
 {
-	int				i;
-	t_vect			pos;
-	t_vect			norm;
-	unsigned char	fov_deg;
-}	t_camera;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_image;
 
-t_camera	camera(t_vect pos, t_vect norm, unsigned char fov_deg);
-t_camera	*create_camera(t_vect pos, t_vect norm, unsigned char fov_deg);
-void		delete_camera(t_camera *ptr_camera);
+typedef struct s_mlxs
+{
+	void	*mlx;
+	void	*mlx_win;
+	t_image	img;
+	t_scene	*sc;
+	t_obj	*new_obj;
+}	t_mlxs;
 
 #endif

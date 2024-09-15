@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.h                                           :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 19:03:59 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/14 18:16:47 by jyap             ###   ########.fr       */
+/*   Created: 2024/09/14 17:09:42 by jyap              #+#    #+#             */
+/*   Updated: 2024/09/15 13:40:00 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#include "prototypes.h"
 
-# include "vect.h"
-
-typedef struct s_camera
+void	print_err(char *msg, void *ptr)
 {
-	int				i;
-	t_vect			pos;
-	t_vect			norm;
-	unsigned char	fov_deg;
-}	t_camera;
+	ft_putstr_fd(msg, 2);
+	if (ptr != NULL)
+	{
+		free(ptr);
+		ptr = NULL;
+	}
+}
 
-t_camera	camera(t_vect pos, t_vect norm, unsigned char fov_deg);
-t_camera	*create_camera(t_vect pos, t_vect norm, unsigned char fov_deg);
-void		delete_camera(t_camera *ptr_camera);
+void	print_err_exit(char *msg, t_mlxs **mlxs, char *ptr)
+{
+	ft_putstr_fd(msg, 2);
+	if (mlxs == NULL || *mlxs == NULL)
+		exit(1);
+	free_all(*mlxs);
+	*mlxs = NULL;
+	if (ptr != NULL)
+		free(ptr);
+	exit (1);
+}
 
-#endif

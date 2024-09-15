@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.h                                           :+:      :+:    :+:   */
+/*   intersect.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 19:03:59 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/14 18:16:47 by jyap             ###   ########.fr       */
+/*   Created: 2024/09/14 16:59:11 by jyap              #+#    #+#             */
+/*   Updated: 2024/09/15 17:59:53 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#ifndef INTERSECT_H
+# define INTERSECT_H
 
-# include "vect.h"
+#include "vect.h"
+#include "color.h"
+#include "obj.h"
 
-typedef struct s_camera
+typedef struct s_inter
 {
-	int				i;
-	t_vect			pos;
-	t_vect			norm;
-	unsigned char	fov_deg;
-}	t_camera;
-
-t_camera	camera(t_vect pos, t_vect norm, unsigned char fov_deg);
-t_camera	*create_camera(t_vect pos, t_vect norm, unsigned char fov_deg);
-void		delete_camera(t_camera *ptr_camera);
+	int			i;
+	t_obj_type	type;
+	void		*obj_ptr;
+	double		dist;
+	t_vect		point;
+	t_vect		normal;
+	t_color		color;
+}	t_inter;
 
 #endif

@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.h                                           :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 19:03:59 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/14 18:16:47 by jyap             ###   ########.fr       */
+/*   Created: 2024/09/14 17:01:39 by jyap              #+#    #+#             */
+/*   Updated: 2024/09/14 17:02:29 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#include "vect.h"
+#include "intersect.h"
 
-# include "vect.h"
-
-typedef struct s_camera
+typedef struct s_ray
 {
-	int				i;
-	t_vect			pos;
-	t_vect			norm;
-	unsigned char	fov_deg;
-}	t_camera;
-
-t_camera	camera(t_vect pos, t_vect norm, unsigned char fov_deg);
-t_camera	*create_camera(t_vect pos, t_vect norm, unsigned char fov_deg);
-void		delete_camera(t_camera *ptr_camera);
-
-#endif
+	t_vect	dir;
+	t_vect	pos;
+	t_inter	*inter;
+}	t_ray;

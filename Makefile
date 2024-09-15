@@ -1,6 +1,6 @@
 NAME	= miniRT
 
-CC		= cc
+CC		= cc -g #-fsanitize=address #-fsanitize=memory
 RM		= rm -rf
 
 CFLAGS 	= -Wall -Wextra -Werror
@@ -8,11 +8,9 @@ CFLAGS 	= -Wall -Wextra -Werror
 SRC_PATH = srcs/
 OBJ_PATH = objs/
 
-#SRC		=	.c/
+SRCS     = $(wildcard $(SRC_PATH)*.c)
 
-SRCS	= $(addprefix $(SRC_PATH), $(SRC))
-OBJ		= $(SRC:.c=.o)
-OBJS	= $(addprefix $(OBJ_PATH), $(OBJ))
+OBJS     = $(patsubst $(SRC_PATH)%.c, $(OBJ_PATH)%.o, $(SRCS))
 
 all: $(NAME)
 
@@ -21,7 +19,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -Ilibft -I./mlx -c $< -o $@
 
 ${NAME}:	${OBJS}
-	@make -C libft
+	@make bonus -C libft
 	@make -C mlx
 	@${CC} ${CFLAGS} $^ -Llibft -lft -L./mlx -lm -lmlx -lglfw -ldl -lX11 -lXext -o ${NAME}
 

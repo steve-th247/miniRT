@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cylinder.h                                         :+:      :+:    :+:   */
+/*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 23:28:10 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/14 17:05:51 by jyap             ###   ########.fr       */
+/*   Created: 2024/09/14 16:44:40 by jyap              #+#    #+#             */
+/*   Updated: 2024/09/14 18:19:43 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CYLINDER_H
-# define CYLINDER_H
+#ifndef LIGHT_H
+# define LIGHT_H
 
-# include "vect.h"
-# include "color.h"
+#include "vect.h"
+#include "color.h"
 
-typedef struct s_cylinder
+typedef struct s_light
 {
+	int		i;
+	float	ratio;
 	t_vect	pos;
-	t_vect	norm_axis;
-	t_color	color;
-	double	dia;
-	double	height;
-}	t_cylinder;
+}	t_light;
 
-t_cylinder	cylinder(t_vect pos, t_vect norm_axis, t_color color,
-				double size_info[2]);
-t_cylinder	*create_cylinder(t_vect pos, t_vect norm_axis, t_color color,
-				double size_info[2]);
-void		delete_cylinder(t_cylinder *ptr_cylinder);
+typedef struct s_amb
+{
+	int		i;
+	float	ratio;
+	t_color	color;
+}	t_amb;
 
 #endif
