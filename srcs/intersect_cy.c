@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 20:29:35 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/15 20:36:36 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 16:59:48 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ bool	is_intersection_valid(t_ray *ray, t_cylinder *cy, double t, double h)
 	t_vect	d;
 	double	m;
 
+	if (t < 0)
+		return (false);
 	p_intersection = add(ray->pos, mult(ray->dir, t));
 	d = sub(p_intersection, cy->pos);
 	m = dot_product(d, cy->norm_axis);
@@ -28,17 +30,12 @@ t_vect	cylinder_normal(t_vect P, t_cylinder *cylinder)
 {
 	t_vect	cp;
 	t_vect	norm_dir;
-	t_vect	normal;
 	double	m;
-	double	length;
 
 	cp = sub(P, cylinder->pos);
 	m = dot_product(cp, cylinder->norm_axis);
 	norm_dir = sub(cp, mult(cylinder->norm_axis, m));
-	length = sqrt(dot_product(norm_dir, norm_dir));
-	normal = vect(norm_dir.x / length, norm_dir.y \
-	/ length, norm_dir.z / length);
-	return (normal);
+	return (normalize(norm_dir));
 }
 
 int	quad_cylinder(t_ray *ray, t_inter *inter, t_cylinder *cylinder, t_vect X)
@@ -62,11 +59,7 @@ int	quad_cylinder(t_ray *ray, t_inter *inter, t_cylinder *cylinder, t_vect X)
 		dist[0] = dist[1];
 	if (!is_intersection_valid(ray, cylinder, dist[0], cylinder->height))
 		return (inter->dist = INFINITY, 0);
-	if (dist[1] >= 0 && dist[1] < dist[0] && \
-	is_intersection_valid(ray, cylinder, dist[1], cylinder->height))
-		inter->dist = dist[1];
-	else
-		inter->dist = dist[0];
+	inter->dist = dist[0];
 	return (1);
 }
 

@@ -6,15 +6,15 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 16:44:40 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/14 18:19:43 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:04:27 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIGHT_H
 # define LIGHT_H
 
-#include "vect.h"
-#include "color.h"
+# include "vect.h"
+# include "color.h"
 
 typedef struct s_light
 {

@@ -6,16 +6,16 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 16:59:11 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/15 17:59:53 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:02:35 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERSECT_H
 # define INTERSECT_H
 
-#include "vect.h"
-#include "color.h"
-#include "obj.h"
+# include "vect.h"
+# include "color.h"
+# include "obj.h"
 
 typedef struct s_inter
 {

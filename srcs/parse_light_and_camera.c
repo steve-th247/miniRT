@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:03:12 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/15 13:16:21 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:05:13 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	parse_amb(char *line, t_mlxs *mlxs)
 	t_amb		amb;
 
 	if (mlxs->sc->amb.i != 0)
-		print_err_exit("Maximum of 1 Ambient Lighting accepted.\n", &mlxs, line);
+		print_err_exit("Maximum of 1 Ambient Lighting accepted.\n",
+			&mlxs, line);
 	split = ft_split(line, ' ');
 	if (split == NULL)
 		print_err_exit("Malloc ft_split failed.\n", &mlxs, line);
@@ -37,7 +38,8 @@ void	parse_amb(char *line, t_mlxs *mlxs)
 	if (count_arr_elements(split) != 3)
 	{
 		free_str_arr(split);
-		print_err_exit("Wrong number of info for Ambient Lighting.\n", &mlxs, line);
+		print_err_exit("Wrong number of info for Ambient Lighting.\n",
+			&mlxs, line);
 	}
 	amb.ratio = parse_ratio(split, 1, line, mlxs);
 	amb.color = parse_color(split, 2, line, mlxs);
@@ -85,7 +87,7 @@ void	parse_camera(char *line, t_mlxs *mlxs)
 		free_str_arr(split);
 		print_err_exit("Wrong number of info for Camera.\n", &mlxs, line);
 	}
-	cam.pos = parse_coord(split, 1, line, mlxs);	
+	cam.pos = parse_coord(split, 1, line, mlxs);
 	cam.norm = parse_vector(split, 2, line, mlxs);
 	cam.fov_deg = parse_camera_fov(split, 3, line, mlxs);
 	mlxs->sc->cam = cam;

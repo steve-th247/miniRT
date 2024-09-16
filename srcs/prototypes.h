@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:09:38 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/15 20:38:55 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:06:56 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ bool	is_intersection_valid(t_ray *ray, t_cylinder *cy, double t, double h);
 t_vect	cylinder_normal(t_vect P, t_cylinder *cylinder);
 int		quad_cylinder(t_ray *ray, t_inter *inter, t_cylinder *cylinder, t_vect X);
 
+void	object_add_end(t_obj **lst, t_obj *new);
 
 #endif

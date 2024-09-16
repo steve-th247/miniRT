@@ -6,35 +6,13 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 20:27:51 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/15 20:36:52 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:06:27 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
 
-t_obj	*last_object(t_obj	*lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
 
-void	object_add_end(t_obj **lst, t_obj *new)
-{
-	t_obj	*last;
-
-	if (!new)
-		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	last = last_object(*lst);
-	last->next = new;
-}
 
 void	parse_obj(char *line, t_mlxs *mlxs, t_obj_type type)
 {

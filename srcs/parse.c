@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:24:59 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/15 13:28:55 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:04:04 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,8 @@ void	parse(char *name, t_mlxs *mlxs)
 	parse_elements(line, fd, mlxs);
 	if (close(fd) == -1)
 		print_err_exit("Failed to close file.\n", &mlxs, NULL);
+	if (mlxs->sc->obj == NULL)
+		print_err_exit("No objects found.\n", &mlxs, NULL);
+	if (mlxs->sc->cam.i != 1)
+		print_err_exit("No camera found.\n", &mlxs, NULL);
 }

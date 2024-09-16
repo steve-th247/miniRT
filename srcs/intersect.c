@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:27:50 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/15 19:06:35 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:01:44 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	closest_inter(t_mlxs *mlxs, t_ray *ray)
 	if (closest == NULL)
 		print_err_exit("Malloc failed.\n", &mlxs, NULL);
 	closest->dist = INFINITY;
+	closest->i = -1;
 	obj = mlxs->sc->obj;
 	while (obj)
 	{
-		closest->i = obj->i;
 		if (obj->type == PLANE)
 			temp = intersect_plane(ray, (t_plane *)obj->obj_ptr);
 		else if (obj->type == SPHERE)
@@ -52,6 +52,7 @@ void	closest_inter(t_mlxs *mlxs, t_ray *ray)
 		{
 			free(closest);
 			closest = temp;
+			closest->i = obj->i;
 		}
 		else
 			free(temp);

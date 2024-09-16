@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.h                                            :+:      :+:    :+:   */
+/*   parse_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/14 16:55:45 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:04:41 by jyap             ###   ########.fr       */
+/*   Created: 2024/09/16 17:06:37 by jyap              #+#    #+#             */
+/*   Updated: 2024/09/16 17:07:06 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_H
-# define SCENE_H
+#include "prototypes.h"
 
-# include "light.h"
-# include "camera.h"
-# include "obj.h"
-
-typedef struct s_scene
+t_obj	*last_object(t_obj	*lst)
 {
-	t_amb		amb;
-	t_camera	cam;
-	t_light		light;
-	t_obj		*obj;
-}	t_scene;
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
 
-#endif
+void	object_add_end(t_obj **lst, t_obj *new)
+{
+	t_obj	*last;
+
+	if (!new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	last = last_object(*lst);
+	last->next = new;
+}
