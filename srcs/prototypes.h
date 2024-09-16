@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:09:38 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:55:06 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 18:14:16 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ void			parse_light(char *line, t_mlxs *mlxs);
 void			parse_camera(char *line, t_mlxs *mlxs);
 void			parse_amb(char *line, t_mlxs *mlxs);
 void			parse_obj(char *line, t_mlxs *mlxs, t_obj_type type);
+void			parse_obj_plane(t_obj *new_obj, char *line, t_mlxs *mlxs);
+void			parse_obj_sphere(t_obj *new_obj, char *line, t_mlxs *mlxs);
+void			parse_obj_cylinder(t_obj *new_obj, char *line, t_mlxs *mlxs);
 
 void			free_two_str_arr(char **arr1, char **arr2);
 

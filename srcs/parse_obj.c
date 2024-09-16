@@ -6,48 +6,11 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 20:27:51 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:09:17 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 18:12:30 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
-
-void	parse_obj(char *line, t_mlxs *mlxs, t_obj_type type)
-{
-	t_obj	*new_obj;
-
-	new_obj = ft_calloc(sizeof(t_obj), 1);
-	if (new_obj == NULL)
-		print_err_exit("Malloc failed.\n", &mlxs, line);
-	mlxs->new_obj = new_obj;
-	if (type == PLANE)
-	{
-		new_obj->type = PLANE;
-		new_obj->obj_ptr = ft_calloc(sizeof(t_plane), 1);
-		if (new_obj->obj_ptr == NULL)
-			print_err_exit("Malloc failed.\n", &mlxs, line);
-		parse_plane(line, mlxs, new_obj);
-	}
-	else if (type == SPHERE)
-	{
-		new_obj->type = SPHERE;
-		new_obj->obj_ptr = ft_calloc(sizeof(t_sphere), 1);
-		if (new_obj->obj_ptr == NULL)
-			print_err_exit("Malloc failed.\n", &mlxs, line);
-		parse_sphere(line, mlxs, new_obj);
-	}
-	else if (type == CYLINDER)
-	{
-		new_obj->type = CYLINDER;
-		new_obj->obj_ptr = ft_calloc(sizeof(t_cylinder), 1);
-		if (new_obj->obj_ptr == NULL)
-			print_err_exit("Malloc failed.\n", &mlxs, line);
-		parse_cylinder(line, mlxs, new_obj);
-	}
-	new_obj->next = NULL;
-	object_add_end(&mlxs->sc->obj, new_obj);
-	mlxs->new_obj = NULL;
-}
 
 void	parse_plane(char *line, t_mlxs *mlxs, t_obj *new_obj)
 {
