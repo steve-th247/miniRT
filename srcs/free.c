@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:13:50 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/15 14:09:48 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:08:24 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	free_obj_list(t_obj *obj)
 	}
 }
 
-void free_scene(t_scene *sc)
+void	free_scene(t_scene *sc)
 {
 	if (sc == NULL)
-		return;
+		return ;
 	if (sc->obj != NULL)
 		free_obj_list(sc->obj);
 	free(sc);

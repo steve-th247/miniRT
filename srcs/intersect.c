@@ -6,13 +6,13 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:27:50 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:01:44 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:09:32 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
 
-bool is_closest(t_inter *closest, t_inter *temp)
+bool	is_closest(t_inter *closest, t_inter *temp)
 {
 	if (temp->dist == INFINITY || temp->dist < 0)
 		return (false);

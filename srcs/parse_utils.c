@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:40:26 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/15 16:37:24 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:53:06 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,14 @@ t_color	parse_color(char **arr, int i, char *line, t_mlxs *mlxs)
 		free_str_arr(arr);
 		print_err_exit("Malloc for ft_split failed.\n", &mlxs, line);
 	}
-	if (count_arr_elements(split) != 3)
-	{
-		free_str_arr(arr);
-		free_str_arr(split);
-		print_err_exit("Invalid info for colors.\n", &mlxs, line);
-	}
 	ret = is_color(split[0]) + is_color(split[1]) + is_color(split[2]);
-	if (ret != 3)
+	if (count_arr_elements(split) != 3 || ret != 3)
 	{
 		free_str_arr(arr);
 		free_str_arr(split);
 		print_err_exit("Invalid info for colors.\n", &mlxs, line);
 	}
-	col.r = ft_atoi(split[0]);		
+	col.r = ft_atoi(split[0]);
 	col.g = ft_atoi(split[1]);
 	col.b = ft_atoi(split[2]);
 	free_str_arr(split);
@@ -81,14 +75,8 @@ t_vect	parse_coord(char **arr, int i, char *line, t_mlxs *mlxs)
 		free_str_arr(arr);
 		print_err_exit("Malloc for ft_split failed.\n", &mlxs, line);
 	}
-	if (count_arr_elements(split) != 3)
-	{
-		free_str_arr(split);
-		free_str_arr(arr);
-		print_err_exit("Invalid info for coordinates.\n", &mlxs, line);
-	}
 	ret = is_float(split[0]) + is_float(split[1]) + is_float(split[2]);
-	if (ret != 3)
+	if (count_arr_elements(split) != 3 || ret != 3)
 	{
 		free_str_arr(arr);
 		free_str_arr(split);
@@ -101,26 +89,11 @@ t_vect	parse_coord(char **arr, int i, char *line, t_mlxs *mlxs)
 	return (coord);
 }
 
-t_vect	parse_vector(char **arr, int i, char *line, t_mlxs *mlxs)
+t_vect	parse_vector_sub(char **arr, char **split, char *line, t_mlxs *mlxs)
 {
-	char	**split;
 	int		ret;
 	t_vect	vect;
 
-	ret = 0;
-	ft_bzero(&vect, sizeof(t_vect));
-	split = ft_split(arr[i], ',');
-	if (split == NULL)
-	{
-		free_str_arr(arr);
-		print_err_exit("Malloc for ft_split failed.\n", &mlxs, line);
-	}
-	if (count_arr_elements(split) != 3)
-	{
-		free_str_arr(split);
-		free_str_arr(arr);
-		print_err_exit("Invalid info for normalized vector.\n", &mlxs, line);
-	}
 	ret = is_float(split[0]) + is_float(split[1]) + is_float(split[2]);
 	if (ret == 3)
 	{
@@ -138,68 +111,24 @@ t_vect	parse_vector(char **arr, int i, char *line, t_mlxs *mlxs)
 	return (vect);
 }
 
-unsigned char	parse_camera_fov(char **arr, int i, char *line, t_mlxs *mlxs)
+t_vect	parse_vector(char **arr, int i, char *line, t_mlxs *mlxs)
 {
 	char	**split;
-	int		fov;
+	t_vect	vect;
 
-	split = ft_split(arr[i], ',');
-	fov = 0;
-	if (split == NULL)
-	{
-		free_str_arr(arr);
-		print_err_exit("Malloc for ft_split failed.\n", &mlxs, line);
-	}
-	if (count_arr_elements(split) != 1)
-	{
-		free_str_arr(split);
-		free_str_arr(arr);
-		print_err_exit("Invalid info for camera FOV.\n", &mlxs, line);
-	}
-	free_str_arr(split);
-	if (is_float(arr[i]) == false)
-	{
-		free_str_arr(arr);
-		print_err_exit("Invalid info for camera FOV.\n", &mlxs, line);
-	}
-	fov = ft_atoi(arr[i]);
-	if (!(fov >= 0 && fov <= 180))
-	{
-		free_str_arr(arr);
-		print_err_exit("Camera FOV must be between 0 and 180.\n", &mlxs, line);
-	}
-	return ((unsigned char)fov);
-}
-
-double	parse_dia_height(char **arr, int i, char *line, t_mlxs *mlxs)
-{
-	char	**split;
-	double	ret;
-
-	ret = 0;
+	ft_bzero(&vect, sizeof(t_vect));
 	split = ft_split(arr[i], ',');
 	if (split == NULL)
 	{
 		free_str_arr(arr);
 		print_err_exit("Malloc for ft_split failed.\n", &mlxs, line);
 	}
-	if (count_arr_elements(split) != 1)
+	if (count_arr_elements(split) != 3)
 	{
 		free_str_arr(split);
 		free_str_arr(arr);
-		print_err_exit("Invalid info for Diameter/Height.\n", &mlxs, line);
+		print_err_exit("Invalid info for normalized vector.\n", &mlxs, line);
 	}
-	free_str_arr(split);
-	if (is_float(arr[i]) == false)
-	{
-		free_str_arr(arr);
-		print_err_exit("Diameter/Height must be a float.\n", &mlxs, line);
-	}
-	ret = (double)str_to_float(arr[i]);
-	if (ret <= 0)
-	{
-		free_str_arr(arr);
-		print_err_exit("Diameter/Height must be larger than 0.\n", &mlxs, line);
-	}
-	return (ret);
+	vect = parse_vector_sub(arr, split, line, mlxs);
+	return (vect);
 }

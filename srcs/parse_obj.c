@@ -6,13 +6,11 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 20:27:51 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:06:27 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:09:17 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
-
-
 
 void	parse_obj(char *line, t_mlxs *mlxs, t_obj_type type)
 {

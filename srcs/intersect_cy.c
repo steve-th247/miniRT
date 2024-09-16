@@ -6,13 +6,13 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 20:29:35 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 16:59:48 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:52:56 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
 
-bool	is_intersection_valid(t_ray *ray, t_cylinder *cy, double t, double h)
+bool	is_intersection_valid(t_ray *ray, t_cylinder *cy, double t)
 {
 	t_vect	p_intersection;
 	t_vect	d;
@@ -23,7 +23,7 @@ bool	is_intersection_valid(t_ray *ray, t_cylinder *cy, double t, double h)
 	p_intersection = add(ray->pos, mult(ray->dir, t));
 	d = sub(p_intersection, cy->pos);
 	m = dot_product(d, cy->norm_axis);
-	return (m >= 0 && m <= h);
+	return (m >= 0 && m <= cy->height);
 }
 
 t_vect	cylinder_normal(t_vect P, t_cylinder *cylinder)
@@ -55,9 +55,9 @@ int	quad_cylinder(t_ray *ray, t_inter *inter, t_cylinder *cylinder, t_vect X)
 		return (inter->dist = INFINITY, 0);
 	dist[0] = (-quad[1] - sqrt(quad[3])) / (2 * quad[0]);
 	dist[1] = (-quad[1] + sqrt(quad[3])) / (2 * quad[0]);
-	if (!is_intersection_valid(ray, cylinder, dist[0], cylinder->height))
+	if (!is_intersection_valid(ray, cylinder, dist[0]))
 		dist[0] = dist[1];
-	if (!is_intersection_valid(ray, cylinder, dist[0], cylinder->height))
+	if (!is_intersection_valid(ray, cylinder, dist[0]))
 		return (inter->dist = INFINITY, 0);
 	inter->dist = dist[0];
 	return (1);

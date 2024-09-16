@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:24:59 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:04:04 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:09:55 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	parse_elements(char *line, int fd, t_mlxs *mlxs)
 	}
 	free (line);
 }
-
 
 void	parse(char *name, t_mlxs *mlxs)
 {

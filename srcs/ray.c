@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 17:40:25 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/15 18:03:51 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/16 17:58:38 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@ t_ray	init_ray(double x, double y, t_mlxs *mlxs)
 
 t_color	get_pixel_color(t_inter *inter)
 {
-	t_color	background;
+	t_color		background;
 	t_plane		*pl;
 	t_sphere	*sp;
 	t_cylinder	*cy;
 
-	background.r = 0;
-	background.g = 0;
-	background.b = 0;
+	background = color(0, 0, 0);
 	if (inter->type == PLANE)
 	{
 		pl = (t_plane *)inter->obj_ptr;
