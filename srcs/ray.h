@@ -17,5 +17,5 @@ typedef struct s_ray
 {
 	t_vect	dir;
 	t_vect	pos;
-	t_inter	*inter;
+	t_inter	inter;
 }	t_ray;

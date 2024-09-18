@@ -72,7 +72,7 @@ void	launch_rays_from_camera(t_mlxs *mlxs)
 		{
 			ray = init_ray(x, y, mlxs);
 			closest_inter(mlxs, &ray);
-			color = get_pixel_color(ray.inter);
+			color = get_pixel_color(&(ray.inter));
 			set_pixel_color(mlxs->img, x, y, get_trgb(color, 0));
 		}
 	}

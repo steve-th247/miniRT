@@ -23,25 +23,22 @@ bool	is_closest(t_inter *closest, t_inter temp)
 	return (false);
 }
 
-void	closest_inter_sub(t_inter **closest, t_inter temp, t_obj *obj)
+void	closest_inter_sub(t_inter *closest, t_inter temp, t_obj *obj)
 {
-	if (!is_closest(*closest, temp))
+	if (!is_closest(closest, temp))
 		return ;
-	**closest = temp;
-	(*closest)->i = obj->i;
+	*closest = temp;
+	closest->i = obj->i;
 }
 
 void	closest_inter(t_mlxs *mlxs, t_ray *ray)
 {
-	t_inter		*closest;
+	t_inter		closest;
 	t_inter		temp;
 	t_obj		*obj;
 
-	closest = ft_calloc(sizeof(t_inter), 1);
-	if (closest == NULL)
-		print_err_exit("Malloc failed.\n", &mlxs, NULL);
-	closest->dist = INFINITY;
-	closest->i = -1;
+	closest.dist = INFINITY;
+	closest.i = -1;
 	obj = mlxs->sc->obj;
 	while (obj)
 	{
