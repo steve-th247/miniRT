@@ -12,39 +12,29 @@
 
 #include "prototypes.h"
 
-bool	is_closest(t_inter *closest, t_inter *temp)
+bool	is_closest(t_inter *closest, t_inter temp)
 {
-	if (temp->dist == INFINITY || temp->dist < 0)
+	if (temp.dist == INFINITY || temp.dist < 0)
 		return (false);
 	if (closest->dist == INFINITY)
 		return (true);
-	else if (temp->dist < closest->dist)
+	else if (temp.dist < closest->dist)
 		return (true);
 	return (false);
 }
 
-void	closest_inter_sub(t_inter **closest, t_inter *temp, t_obj *obj,
-			t_mlxs *mlxs)
+void	closest_inter_sub(t_inter **closest, t_inter temp, t_obj *obj)
 {
-	if (temp == NULL)
-	{
-		free(*closest);
-		print_err_exit("Malloc failed.\n", &mlxs, NULL);
-	}
-	if (is_closest(*closest, temp))
-	{
-		free(*closest);
-		*closest = temp;
-		(*closest)->i = obj->i;
-	}
-	else
-		free(temp);
+	if (!is_closest(*closest, temp))
+		return ;
+	**closest = temp;
+	(*closest)->i = obj->i;
 }
 
 void	closest_inter(t_mlxs *mlxs, t_ray *ray)
 {
 	t_inter		*closest;
-	t_inter		*temp;
+	t_inter		temp;
 	t_obj		*obj;
 
 	closest = ft_calloc(sizeof(t_inter), 1);
@@ -61,7 +51,7 @@ void	closest_inter(t_mlxs *mlxs, t_ray *ray)
 			temp = intersect_sphere(ray, (t_sphere *)obj->obj_ptr);
 		else if (obj->type == CYLINDER)
 			temp = intersect_cylinder(ray, (t_cylinder *) obj->obj_ptr);
-		closest_inter_sub(&closest, temp, obj, mlxs);
+		closest_inter_sub(&closest, temp, obj);
 		obj = obj->next;
 	}
 	ray->inter = closest;

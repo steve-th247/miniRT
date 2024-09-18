@@ -63,21 +63,18 @@ int	quad_cylinder(t_ray *ray, t_inter *inter, t_cylinder *cylinder, t_vect X)
 	return (1);
 }
 
-t_inter	*intersect_cylinder(t_ray *ray, t_cylinder *cylinder)
+t_inter	intersect_cylinder(t_ray *ray, t_cylinder *cylinder)
 {
-	t_inter	*inter;
+	t_inter	inter;
 	t_vect	x;
 
-	inter = ft_calloc(sizeof(t_inter), 1);
-	if (inter == NULL)
-		return (NULL);
-	inter->type = CYLINDER;
-	inter->obj_ptr = cylinder;
+	inter.type = CYLINDER;
+	inter.obj_ptr = cylinder;
 	x = vect(ray->pos.x - cylinder->pos.x, ray->pos.y - \
 	cylinder->pos.y, ray->pos.z - cylinder->pos.z);
-	if (!quad_cylinder(ray, inter, cylinder, x))
+	if (!quad_cylinder(ray, &inter, cylinder, x))
 		return (inter);
-	inter->point = add(ray->pos, mult(ray->dir, inter->dist));
-	inter->normal = cylinder_normal(inter->point, cylinder);
+	inter.point = add(ray->pos, mult(ray->dir, inter.dist));
+	inter.normal = cylinder_normal(inter.point, cylinder);
 	return (inter);
 }

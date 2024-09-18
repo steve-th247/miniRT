@@ -93,12 +93,12 @@ t_color			get_pixel_color(t_inter *inter);
 
 void			launch_rays_from_camera(t_mlxs *mlxs);
 
-bool			is_closest(t_inter *closest, t_inter *temp);
+bool			is_closest(t_inter *closest, t_inter temp);
 void			closest_inter(t_mlxs *mlxs, t_ray *ray);
 
-t_inter			*intersect_plane(t_ray *ray, t_plane *plane);
-t_inter			*intersect_sphere(t_ray *ray, t_sphere *sphere);
-t_inter			*intersect_cylinder(t_ray *ray, t_cylinder *cylinder);
+t_inter			intersect_plane(t_ray *ray, t_plane *plane);
+t_inter			intersect_sphere(t_ray *ray, t_sphere *sphere);
+t_inter			intersect_cylinder(t_ray *ray, t_cylinder *cylinder);
 
 bool			is_intersection_valid(t_ray *ray, t_cylinder *cy, double t);
 t_vect			cylinder_normal(t_vect P, t_cylinder *cylinder);
