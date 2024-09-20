@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:07:53 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 08:12:36 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/20 12:15:45 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	parse_obj(char *line, t_mlxs *mlxs, t_obj_type type)
 	static int	i;
 
 	new_obj = ft_calloc(sizeof(t_obj), 1);
+	new_obj->type = 0;
+	new_obj->obj_ptr = NULL;
 	if (new_obj == NULL)
 		print_err_exit("Malloc failed.\n", &mlxs, line);
 	mlxs->new_obj = new_obj;
