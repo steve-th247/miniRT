@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 17:05:36 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 10:07:34 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:17:14 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,14 @@ double	solve_quadratic(double a, double b, double c)
 double	dot_product(t_vect v1, t_vect v2)
 {
 	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
+}
+
+t_vect	cross_product(t_vect v1, t_vect v2)
+{
+	t_vect	ret;
+
+	ret.x = v1.y * v2.z - v1.z * v2.y;
+	ret.y = v1.z * v2.x - v1.x * v2.z;
+	ret.z = v1.x * v2.y - v1.y * v2.x;
+	return (ret);
 }

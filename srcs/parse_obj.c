@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 20:27:51 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 18:12:30 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/20 14:35:54 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	parse_plane(char *line, t_mlxs *mlxs, t_obj *new_obj)
 		print_err_exit("Invalid info for Plane.\n", &mlxs, line);
 	}
 	plane->pos = parse_coord(split, 1, line, mlxs);
-	plane->norm = parse_vector(split, 2, line, mlxs);
+	plane->norm = normalize(parse_vector(split, 2, line, mlxs));
 	plane->color = parse_color(split, 3, line, mlxs);
 	free_str_arr(split);
 }
@@ -67,7 +67,7 @@ void	parse_cylinder(char *line, t_mlxs *mlxs, t_obj *new_obj)
 		print_err_exit("Invalid info for Cylinder.\n", &mlxs, line);
 	}
 	cylinder->pos = parse_coord(split, 1, line, mlxs);
-	cylinder->norm_axis = parse_vector(split, 2, line, mlxs);
+	cylinder->norm_axis = normalize(parse_vector(split, 2, line, mlxs));
 	cylinder->dia = parse_dia_height(split, 3, line, mlxs);
 	cylinder->height = parse_dia_height(split, 4, line, mlxs);
 	cylinder->color = parse_color(split, 5, line, mlxs);

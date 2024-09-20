@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:09:38 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 11:54:04 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:52:10 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,5 @@ t_vect			parse_vector_sub(char **arr, char **split, char *line,
 
 t_color			color_ambient(const t_mlxs *mlxs);
 t_color			color_diffuse(t_mlxs *mlxs, t_inter *inter);
-
+t_vect			cross_product(t_vect v1, t_vect v2);
 #endif

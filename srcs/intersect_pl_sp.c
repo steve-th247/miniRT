@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_pl_sp.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 19:11:37 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 12:25:39 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:36:41 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_inter	intersect_plane(t_ray *ray, t_plane *plane)
 	double	t;
 	double	denom;
 
-	plane->norm = normalize(plane->norm);
 	denom = dot_product(plane->norm, ray->dir);
 	if (fabs(denom) < 1e-6)
 		return (inter.dist = INFINITY, inter);
