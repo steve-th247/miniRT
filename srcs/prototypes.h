@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:09:38 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 18:14:16 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/20 11:54:04 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,8 @@ void			object_add_end(t_obj **lst, t_obj *new);
 
 t_vect			parse_vector_sub(char **arr, char **split, char *line,
 					t_mlxs *mlxs);
+
+t_color			color_ambient(const t_mlxs *mlxs);
+t_color			color_diffuse(t_mlxs *mlxs, t_inter *inter);
+
 #endif
