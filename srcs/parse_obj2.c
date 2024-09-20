@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_obj2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:07:53 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 18:14:34 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/20 08:12:36 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	parse_obj_cylinder(t_obj *new_obj, char *line, t_mlxs *mlxs)
 
 void	parse_obj(char *line, t_mlxs *mlxs, t_obj_type type)
 {
-	t_obj	*new_obj;
+	t_obj		*new_obj;
+	static int	i;
 
 	new_obj = ft_calloc(sizeof(t_obj), 1);
 	if (new_obj == NULL)
@@ -54,6 +55,7 @@ void	parse_obj(char *line, t_mlxs *mlxs, t_obj_type type)
 	else if (type == CYLINDER)
 		parse_obj_cylinder(new_obj, line, mlxs);
 	new_obj->next = NULL;
+	new_obj->i = i++;
 	object_add_end(&mlxs->sc->obj, new_obj);
 	mlxs->new_obj = NULL;
 }
