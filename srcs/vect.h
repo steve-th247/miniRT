@@ -23,5 +23,6 @@ typedef struct s_vect
 t_vect	vect(double x, double y, double z);
 t_vect	*create_vect(double x, double y, double z);
 void	delete_vect(t_vect *ptr_vect);
+char	vect_is_equal(t_vect v1, t_vect v2);
 
 #endif
