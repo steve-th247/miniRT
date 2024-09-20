@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 19:11:37 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 10:03:55 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/20 12:25:39 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_inter	intersect_plane(t_ray *ray, t_plane *plane)
 	inter.dist = t;
 	inter.point = add(ray->pos, mult(ray->dir, t));
 	inter.normal = plane->norm;
+	inter.color = plane->color;
 	return (inter);
 }
 
@@ -54,5 +55,6 @@ t_inter	intersect_sphere(t_ray *ray, t_sphere *sphere)
 	inter.dist = t;
 	inter.point = add(ray->pos, mult(ray->dir, t));
 	inter.normal = normalize(sub(inter.point, sphere->pos));
+	inter.color = sphere->color;
 	return (inter);
 }

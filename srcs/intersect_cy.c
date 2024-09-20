@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 20:29:35 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 10:05:30 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/20 12:26:17 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ t_inter	intersect_cylinder(t_ray *ray, t_cylinder *cylinder)
 		return (inter);
 	inter.point = add(ray->pos, mult(ray->dir, inter.dist));
 	inter.normal = cylinder_normal(inter.point, cylinder);
+	inter.color = cylinder->color;
 	return (inter);
 }

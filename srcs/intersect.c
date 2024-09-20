@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:27:50 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 10:01:40 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:41:59 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	closest_inter(t_mlxs *mlxs, t_ray *ray)
 
 	closest.dist = INFINITY;
 	closest.i = -1;
+	closest.color = color(0, 0, 0);
 	obj = mlxs->sc->obj;
 	while (obj)
 	{
