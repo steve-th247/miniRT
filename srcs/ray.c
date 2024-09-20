@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 17:40:25 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 13:42:59 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:01:23 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_ray	init_ray(double x, double y, t_mlxs *mlxs)
 	return (ray);
 }
 
-t_color	get_obj_color(t_inter *inter)
+t_color	get_pixel_color(t_inter *inter)
 {
 	t_color		background;
 	t_plane		*pl;
