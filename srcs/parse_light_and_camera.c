@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_light_and_camera.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:03:12 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:05:13 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/20 08:07:15 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	parse_light(char *line, t_mlxs *mlxs)
 	}
 	light.pos = parse_coord(split, 1, line, mlxs);
 	light.ratio = parse_ratio(split, 2, line, mlxs);
+	light.color = color(255, 255, 255);
 	mlxs->sc->light = light;
 	free_str_arr(split);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 16:44:40 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:04:27 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/20 07:57:19 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_light
 	int		i;
 	float	ratio;
 	t_vect	pos;
+	t_color	color;
 }	t_light;
 
 typedef struct s_amb
