@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 17:40:25 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:58:38 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/20 13:42:59 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
+#include "color.h"
 
 t_ray	init_ray(double x, double y, t_mlxs *mlxs)
 {
@@ -29,7 +30,7 @@ t_ray	init_ray(double x, double y, t_mlxs *mlxs)
 	return (ray);
 }
 
-t_color	get_pixel_color(t_inter *inter)
+t_color	get_obj_color(t_inter *inter)
 {
 	t_color		background;
 	t_plane		*pl;
@@ -59,10 +60,10 @@ t_color	get_pixel_color(t_inter *inter)
 
 void	launch_rays_from_camera(t_mlxs *mlxs)
 {
-	double	x;
-	double	y;
+	int		x;
+	int		y;
 	t_ray	ray;
-	t_color	color;
+	t_color	pix_color;
 
 	y = -1;
 	while (++y < WIN_H)
@@ -72,8 +73,12 @@ void	launch_rays_from_camera(t_mlxs *mlxs)
 		{
 			ray = init_ray(x, y, mlxs);
 			closest_inter(mlxs, &ray);
-			color = get_pixel_color(&(ray.inter));
-			set_pixel_color(mlxs->img, x, y, get_trgb(color, 0));
+			if (ray.inter.i == -1)
+				pix_color = color(0, 0, 0);
+			else
+				pix_color = add_color(ray.inter.color,
+						color_ambient(mlxs), color_diffuse(mlxs, &(ray.inter)));
+			set_pixel_color(mlxs->img, x, y, get_trgb(pix_color, 0));
 		}
 	}
 }
