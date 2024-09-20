@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_pl_sp.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 19:11:37 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:59:11 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/20 10:03:55 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_inter	intersect_sphere(t_ray *ray, t_sphere *sphere)
 			2.0 * dot_product(origin_center, ray->dir),
 			dot_product(origin_center, origin_center)
 			- pow(sphere->dia / 2, 2));
-	if (t < 0)
+	if (t < 1e-4)
 	{
 		inter.dist = INFINITY;
 		return (inter);

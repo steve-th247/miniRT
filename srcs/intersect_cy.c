@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_cy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 20:29:35 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:52:56 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/20 10:05:30 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool	is_intersection_valid(t_ray *ray, t_cylinder *cy, double t)
 	t_vect	d;
 	double	m;
 
-	if (t < 0)
+	if (t < 1e-4)
 		return (false);
 	p_intersection = add(ray->pos, mult(ray->dir, t));
 	d = sub(p_intersection, cy->pos);
@@ -51,7 +51,7 @@ int	quad_cylinder(t_ray *ray, t_inter *inter, t_cylinder *cylinder, t_vect X)
 	quad[2] = dot_product(X, X) - \
 	pow(dot_product(X, cylinder->norm_axis), 2) - pow(cylinder->dia / 2, 2);
 	quad[3] = quad[1] * quad[1] - 4 * quad[0] * quad[2];
-	if (quad[3] < 0)
+	if (quad[3] < 1e-4)
 		return (inter->dist = INFINITY, 0);
 	dist[0] = (-quad[1] - sqrt(quad[3])) / (2 * quad[0]);
 	dist[1] = (-quad[1] + sqrt(quad[3])) / (2 * quad[0]);

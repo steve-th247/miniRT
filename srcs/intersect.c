@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:27:50 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 18:27:16 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/20 10:01:40 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	is_closest(t_inter *closest, t_inter temp)
 {
-	if (temp.dist == INFINITY || temp.dist < 0)
+	if (temp.dist == INFINITY || temp.dist < 1e-4)
 		return (false);
 	if (closest->dist == INFINITY)
 		return (true);
