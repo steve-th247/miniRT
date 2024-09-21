@@ -3,40 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 17:40:25 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/22 00:48:25 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/22 03:36:52 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
 #include "color.h"
-
-// Step 1: Compute the rotation axis (cross product of (0, 0, 1) and target)
-// Step 2: Normalize the rotation axis
-// Step 3: Compute the angle (dot product of (0, 0, 1) and target)
-// Step 4: Compute cross product of rotation axis and p
-// Step 5: Compute dot product of rotation axis and p
-// Step 6: Apply Rodrigues' rotation formula
-t_vect	rotate_vector(t_vect p, t_vect target)
-{
-	t_vect	rotation_axis;
-	double	sin_theta;
-	t_vect	cross;
-	double	dot;
-
-	rotation_axis = normalize(vect(-target.y, target.x, 0));
-	sin_theta = sqrt(1 - target.z * target.z);
-	cross = cross_product(rotation_axis, p);
-	dot = dot_product(rotation_axis, p);
-	return (vect(p.x * target.z + cross.x * sin_theta
-			+ rotation_axis.x * dot * (1 - target.z),
-			p.y * target.z + cross.y * sin_theta
-			+ rotation_axis.y * dot * (1 - target.z),
-			p.z * target.z + cross.z * sin_theta
-			+ rotation_axis.z * dot * (1 - target.z)));
-}
 
 t_ray	init_ray(double x, double y, t_mlxs *mlxs)
 {
@@ -51,12 +26,7 @@ t_ray	init_ray(double x, double y, t_mlxs *mlxs)
 	v.y = y - WIN_H * 0.5;
 	v.z = max / (2 * tan((mlxs->sc->cam.fov_deg * 0.5) * M_PI / 180.0));
 	v = normalize(v);
-	if (vect_is_equal(vect(0, 0, 1), mlxs->sc->cam.norm))
-		ray.dir = v;
-	else if (vect_is_equal(vect(0, 0, -1), mlxs->sc->cam.norm))
-		ray.dir = vect(-v.x, -v.y, -v.z);
-	else
-		ray.dir = rotate_vector(v, mlxs->sc->cam.norm);
+	ray.dir = rotate_vector(v, mlxs->sc->cam.norm);
 	ray.pos = mlxs->sc->cam.pos;
 	return (ray);
 }

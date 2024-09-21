@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:09:38 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/21 19:20:45 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/22 03:35:27 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ t_vect			mult(t_vect v, double scale);
 t_vect			sub(t_vect v1, t_vect v2);
 t_vect			add(t_vect v1, t_vect v2);
 t_vect			normalize(t_vect v);
+t_vect			cross_product(t_vect v1, t_vect v2);
+t_vect			rotate_vector(t_vect p, t_vect target);
 
 t_color			get_pixel_color(t_inter *inter);
 
@@ -111,7 +113,6 @@ t_vect			parse_vector_sub(char **arr, char **split, char *line,
 
 t_color			color_ambient(const t_mlxs *mlxs);
 t_color			color_diffuse(t_mlxs *mlxs, t_inter *inter);
-t_vect			cross_product(t_vect v1, t_vect v2);
 
 void			set_img_pixel_color(t_image img, int x, int y, int color);
 
