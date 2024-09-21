@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_interface.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/21 19:33:18 by tjien-ji          #+#    #+#             */
+/*   Updated: 2024/09/21 19:34:17 by tjien-ji         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mlx_structs.h"
 
 #ifndef WIN_W
@@ -7,7 +19,6 @@
 #ifndef WIN_H
 # define WIN_H 500
 #endif
-
 
 void	set_img_pixel_color(t_image img, int x, int y, int color)
 {
