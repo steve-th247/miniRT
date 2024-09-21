@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 17:40:25 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/21 19:27:27 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/22 00:48:25 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_vect	rotate_vector(t_vect p, t_vect target)
 	double	dot;
 
 	rotation_axis = normalize(vect(-target.y, target.x, 0));
-	target.z = target.z;
 	sin_theta = sqrt(1 - target.z * target.z);
 	cross = cross_product(rotation_axis, p);
 	dot = dot_product(rotation_axis, p);

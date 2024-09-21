@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:40:26 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:53:06 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/22 00:51:18 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,23 +92,23 @@ t_vect	parse_coord(char **arr, int i, char *line, t_mlxs *mlxs)
 t_vect	parse_vector_sub(char **arr, char **split, char *line, t_mlxs *mlxs)
 {
 	int		ret;
-	t_vect	vect;
+	t_vect	vector;
 
 	ret = is_float(split[0]) + is_float(split[1]) + is_float(split[2]);
 	if (ret == 3)
 	{
-		vect.x = (double)str_to_float(split[0]);
-		vect.y = (double)str_to_float(split[1]);
-		vect.z = (double)str_to_float(split[2]);
-		ret += is_range(vect.x) + is_range(vect.y) + is_range(vect.x);
+		vector.x = (double)str_to_float(split[0]);
+		vector.y = (double)str_to_float(split[1]);
+		vector.z = (double)str_to_float(split[2]);
+		ret += is_range(vector.x) + is_range(vector.y) + is_range(vector.x);
 	}
 	free_str_arr(split);
-	if (ret != 6)
+	if (ret != 6 || vect_is_equal(vect(0, 0, 0), vector))
 	{
 		free_str_arr(arr);
 		print_err_exit("Invalid info for normalized vector.\n", &mlxs, line);
 	}
-	return (vect);
+	return (vector);
 }
 
 t_vect	parse_vector(char **arr, int i, char *line, t_mlxs *mlxs)
