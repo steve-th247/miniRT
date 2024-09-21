@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:07:00 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:03:36 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/21 19:26:34 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,6 @@ int	destroy(t_mlxs *mlxs)
 	free_all(mlxs);
 	exit (0);
 	return (0);
-}
-
-void	set_pixel_color(t_image img, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x >= 0 && x < WIN_W && y >= 0 && y < WIN_H)
-	{
-		dst = img.addr + (y * img.line_length + \
-		x * (img.bits_per_pixel / 8));
-		*(unsigned int *)dst = color;
-	}
 }
 
 int	render(t_mlxs *mlxs)

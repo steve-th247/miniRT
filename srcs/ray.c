@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 17:40:25 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 15:25:11 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/21 19:27:27 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	launch_rays_from_camera(t_mlxs *mlxs)
 			else
 				pix_color = add_color(ray.inter.color,
 						color_ambient(mlxs), color_diffuse(mlxs, &(ray.inter)));
-			set_pixel_color(mlxs->img, x, y, get_trgb(pix_color, 0));
+			set_img_pixel_color(mlxs->img, x, y, get_trgb(pix_color, 0));
 		}
 	}
 }
