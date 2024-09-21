@@ -1,0 +1,7 @@
+**/*.o
+**/*.a
+**/.*
+mlx/**
+miniRT
+scenes/**
+!.gitignore
