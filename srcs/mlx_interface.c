@@ -17,6 +17,13 @@ void	set_img_pixel_color(t_image img, int x, int y, int color)
 	{
 		dst = img.addr + (y * img.line_length + \
 		x * (img.bits_per_pixel / 8));
+		if (img.endian)
+		{
+			color = ((color >> 24) & 0xff)
+				| ((color >> 8) & 0xff00)
+				| ((color << 8) & 0xff0000)
+				| ((color << 24) & 0xff000000);
+		}
 		*(unsigned int *)dst = color;
 	}
 }
