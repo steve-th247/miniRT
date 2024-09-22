@@ -78,6 +78,7 @@ void	free_all(t_mlxs *mlxs)
 		free(mlxs->arr_obj_ptrs);
 		free_scene(mlxs->sc);
 		mlxs->sc = NULL;
+		free(mlxs->mlx);
 		free(mlxs);
 	}
 }
