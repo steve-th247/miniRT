@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 22:57:35 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/09 23:07:34 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/22 21:41:17 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,23 @@
 # include "vect.h"
 # include "color.h"
 
-typedef struct s_sphere
+typedef struct s_sphere	t_sphere;
+
+struct s_sphere
 {
+	void		(*translate)(t_sphere *, t_vect);
+	void		(*rotate)(t_sphere *, t_vect);
+	void		(*resize_1)(t_sphere *, double);
+	void		(*resize_2)(t_sphere *, double);
 	t_vect		pos;
 	t_color		color;
 	double		dia;
-}	t_sphere;
+};
 
 t_sphere	sphere(t_vect pos, double dia, t_color color);
 t_sphere	*create_sphere(t_vect pos, double dia, t_color color);
 void		delete_sphere(t_sphere *ptr_sphere);
+void		translate_sphere(t_sphere *sphere, t_vect vector);
+void		resize_sphere(t_sphere *sphere, double delta);
 
 #endif
