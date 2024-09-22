@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:13:50 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/21 22:15:35 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/23 07:56:46 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,8 @@ void	free_all(t_mlxs *mlxs)
 			mlx_destroy_display(mlxs->mlx);
 		if (mlxs->new_obj != NULL)
 		{
-			if (mlxs->new_obj->obj_ptr != NULL)
-			{
-				free(mlxs->new_obj->obj_ptr);
-				mlxs->new_obj->obj_ptr = NULL;
-			}
+			free(mlxs->new_obj->obj_ptr);
+			mlxs->new_obj->obj_ptr = NULL;
 			free(mlxs->new_obj);
 			mlxs->new_obj = NULL;
 		}
