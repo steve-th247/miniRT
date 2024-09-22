@@ -6,11 +6,12 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 19:33:18 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/21 19:34:17 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/21 21:08:56 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_structs.h"
+#include "mlx.h"
 
 #ifndef WIN_W
 # define WIN_W 500
@@ -19,6 +20,17 @@
 #ifndef WIN_H
 # define WIN_H 500
 #endif
+
+void	init_mlx(t_mlxs *mlxs)
+{
+	mlxs->mlx = mlx_init();
+	mlxs->mlx_win = mlx_new_window(mlxs->mlx, WIN_W,
+			WIN_H, "miniRT");
+	mlxs->img.img = mlx_new_image(mlxs->mlx, WIN_W, WIN_H);
+	mlxs->img.addr = mlx_get_data_addr(mlxs->img.img,
+			&mlxs->img.bits_per_pixel, &mlxs->img.line_length,
+			&mlxs->img.endian);
+}
 
 void	set_img_pixel_color(t_image img, int x, int y, int color)
 {

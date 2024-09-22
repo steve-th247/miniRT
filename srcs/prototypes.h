@@ -105,6 +105,7 @@ t_vect			parse_vector_sub(char **arr, char **split, char *line,
 t_color			color_ambient(const t_mlxs *mlxs);
 t_color			color_diffuse(t_mlxs *mlxs, t_inter *inter);
 
+void			init_mlx(t_mlxs *mlxs);
 void			set_img_pixel_color(t_image img, int x, int y, int color);
 
 #endif
