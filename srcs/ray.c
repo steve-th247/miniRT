@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 17:40:25 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/22 03:36:52 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/23 06:43:55 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ void	launch_rays_from_camera(t_mlxs *mlxs)
 				pix_color = add_color(ray.inter.color,
 						color_ambient(mlxs), color_diffuse(mlxs, &(ray.inter)));
 			set_img_pixel_color(mlxs->img, x, y, get_trgb(pix_color, 0));
+			if (ray.inter.i == -1)
+				mlxs->arr_obj_ptrs[(WIN_W * y) + x] = NULL;
+			else
+				mlxs->arr_obj_ptrs[(WIN_W * y) + x] = ray.inter.obj_ptr;
 		}
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 16:57:24 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:04:20 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/23 00:13:08 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_mlxs
 	t_image	img;
 	t_scene	*sc;
 	t_obj	*new_obj;
+	void	**arr_obj_ptrs;
 }	t_mlxs;
 
 #endif

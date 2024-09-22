@@ -52,6 +52,9 @@ int	main(int ac, char **av)
 		print_err_exit("Malloc mlxs failed.\n", NULL, NULL);
 	parse(av[1], mlxs);
 	init_mlx(mlxs);
+	mlxs->arr_obj_ptrs = ft_calloc(WIN_H * WIN_W, sizeof(void *));
+	if (mlxs->arr_obj_ptrs == NULL)
+		print_err_exit("Malloc failed.\n", NULL, NULL);
 	render(mlxs);
 	mlx_hook(mlxs->mlx_win, 17, 0, destroy, mlxs);
 	mlx_key_hook(mlxs->mlx_win, handle_key, mlxs);

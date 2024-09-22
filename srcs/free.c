@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:13:50 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:08:24 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/21 22:15:35 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	free_all(t_mlxs *mlxs)
 			free(mlxs->new_obj);
 			mlxs->new_obj = NULL;
 		}
+		free(mlxs->arr_obj_ptrs);
 		free_scene(mlxs->sc);
 		mlxs->sc = NULL;
 		free(mlxs);
