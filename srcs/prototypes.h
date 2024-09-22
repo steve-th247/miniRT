@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:09:38 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/22 03:35:27 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:54:41 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,6 @@ void			parse_sphere(char *line, t_mlxs *mlxs, t_obj *new_obj);
 void			parse_cylinder(char *line, t_mlxs *mlxs, t_obj *new_obj);
 
 double			solve_quadratic(double a, double b, double c);
-
-double			dot_product(t_vect v1, t_vect v2);
-double			distance(t_vect v1, t_vect v2);
-t_vect			mult(t_vect v, double scale);
-t_vect			sub(t_vect v1, t_vect v2);
-t_vect			add(t_vect v1, t_vect v2);
-t_vect			normalize(t_vect v);
-t_vect			cross_product(t_vect v1, t_vect v2);
-t_vect			rotate_vector(t_vect p, t_vect target);
 
 t_color			get_pixel_color(t_inter *inter);
 
