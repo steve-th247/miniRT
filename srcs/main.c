@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:07:00 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/23 06:19:50 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/23 07:23:12 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int	main(int ac, char **av)
 	render(mlxs);
 	init_mlx_hook(mlxs);
 	mlx_loop(mlxs->mlx);
+	destroy(mlxs);
 	return (0);
 }
