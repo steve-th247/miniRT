@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 16:57:24 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/23 00:13:08 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/23 07:17:08 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_mlxs
 	t_scene	*sc;
 	t_obj	*new_obj;
 	void	**arr_obj_ptrs;
+	void	*last_selected_obj;
 }	t_mlxs;
 
 #endif

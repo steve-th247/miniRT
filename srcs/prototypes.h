@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:09:38 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/22 18:54:41 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/23 06:34:56 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@
 
 # define WIN_W 500
 # define WIN_H 500
+
+# define LEFT_MOUSE_BUTTON 1
+# define MOUSE_SCROLL_UP 4
+# define MOUSE_SCROLL_DOWN 5
 
 void			print_err_exit(char *msg, t_mlxs **mlxs, char *ptr);
 void			arr_exit(char *msg, t_mlxs **mlxs, char **ptr,
@@ -107,5 +111,19 @@ t_color			color_diffuse(t_mlxs *mlxs, t_inter *inter);
 
 void			init_mlx(t_mlxs *mlxs);
 void			set_img_pixel_color(t_image img, int x, int y, int color);
+
+int				mouse_hook_callback(int button, int x, int y, void *param);
+int				kb_hook_callback(int keycode, void *param);
+
+void			mouse_event_handler_resize_obj(int button, t_mlxs *mlxs);
+void			kb_event_handler_transform_obj(int keycode, t_mlxs *mlxs);
+void			kb_event_handler_rotate_obj(int keycode, t_mlxs *mlxs);
+void			kb_event_handler_translate_obj(int keycode, t_mlxs *mlxs);
+void			kb_event_handler_resize_obj(int keycode, t_mlxs *mlxs);
+
+void			kb_event_handler_transform_cam(int keycode, t_mlxs *mlxs);
+void			kb_event_handler_rotate_cam(int keycode, t_mlxs *mlxs);
+void			kb_event_handler_translate_cam(int keycode, t_mlxs *mlxs);
+void			kb_event_handler_zoom_cam(int keycode, t_mlxs *mlxs);
 
 #endif
