@@ -6,21 +6,11 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:07:00 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/21 22:20:47 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/23 06:19:50 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prototypes.h"
-
-int	handle_key(const int keycode, t_mlxs *mlxs)
-{
-	if (keycode == 65307)
-	{
-		free_all(mlxs);
-		exit (0);
-	}
-	return (0);
-}
 
 int	destroy(t_mlxs *mlxs)
 {
@@ -56,8 +46,7 @@ int	main(int ac, char **av)
 	if (mlxs->arr_obj_ptrs == NULL)
 		print_err_exit("Malloc failed.\n", NULL, NULL);
 	render(mlxs);
-	mlx_hook(mlxs->mlx_win, 17, 0, destroy, mlxs);
-	mlx_key_hook(mlxs->mlx_win, handle_key, mlxs);
+	init_mlx_hook(mlxs);
 	mlx_loop(mlxs->mlx);
 	return (0);
 }

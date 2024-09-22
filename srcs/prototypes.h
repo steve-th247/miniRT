@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:09:38 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/23 06:34:56 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/23 07:19:29 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ t_color			color_diffuse(t_mlxs *mlxs, t_inter *inter);
 
 void			init_mlx(t_mlxs *mlxs);
 void			set_img_pixel_color(t_image img, int x, int y, int color);
+void			init_mlx_hook(t_mlxs *mlxs);
 
 int				mouse_hook_callback(int button, int x, int y, void *param);
 int				kb_hook_callback(int keycode, void *param);
