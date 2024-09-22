@@ -39,6 +39,8 @@
 # define MOUSE_SCROLL_UP 4
 # define MOUSE_SCROLL_DOWN 5
 
+int				render(t_mlxs *mlxs);
+
 void			print_err_exit(char *msg, t_mlxs **mlxs, char *ptr);
 void			arr_exit(char *msg, t_mlxs **mlxs, char **ptr,
 					char *ptr1);
