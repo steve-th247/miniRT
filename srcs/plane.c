@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 23:01:41 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/09 23:53:06 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:57:08 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include "plane.h"
+#include "vect.h"
 
 t_plane	plane(t_vect pos, t_vect norm, t_color color)
 {
@@ -22,6 +23,10 @@ t_plane	plane(t_vect pos, t_vect norm, t_color color)
 	plane.pos = pos;
 	plane.norm = norm;
 	plane.color = color;
+	plane.translate = translate_plane;
+	plane.rotate = rotate_plane;
+	plane.resize_1 = NULL;
+	plane.resize_2 = NULL;
 	return (plane);
 }
 
@@ -42,4 +47,14 @@ t_plane	*create_plane(t_vect pos, t_vect norm, t_color color)
 void	delete_plane(t_plane *ptr_plane)
 {
 	free(ptr_plane);
+}
+
+void	translate_plane(t_plane *plane, t_vect vector)
+{
+	plane->pos = add(plane->pos, vector);
+}
+
+void	rotate_plane(t_plane *plane, t_vect target_z)
+{
+	plane->norm = rotate_vector(plane->norm, target_z);
 }
