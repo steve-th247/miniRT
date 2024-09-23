@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:54:15 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/22 18:57:42 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/24 07:18:04 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_vect	rotate_vector(t_vect p, t_vect target)
 	if (fabs(target.z - 1) < 1e-4)
 		return (p);
 	if (fabs(target.z + 1) < 1e-4)
-		return (mult(target, -1));
+		return (mult(p, -1));
 	rotation_axis = normalize(vect(-target.y, target.x, 0));
 	sin_theta = sqrt(1 - target.z * target.z);
 	cross = cross_product(rotation_axis, p);
