@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 06:04:31 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/23 08:40:43 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/24 07:07:27 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	kb_event_handler_zoom_cam(int keycode, t_mlxs *mlxs)
 	double	diff;
 
 	diff = 0;
-	if (keycode == XK_KP_Add)
-		diff = -1;
-	else if (keycode == XK_KP_Subtract)
+	if (keycode == XK_KP_Add && mlxs->sc->cam.fov_deg < 179)
 		diff = 1;
-	mlxs->sc->cam.fov_deg -= diff;
+	else if (keycode == XK_KP_Subtract && mlxs->sc->cam.fov_deg > 2)
+		diff = -1;
+	mlxs->sc->cam.fov_deg += diff;
 }
