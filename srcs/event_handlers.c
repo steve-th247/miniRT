@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 05:01:26 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/23 06:37:14 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/23 08:35:21 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	kb_event_handler_translate_obj(int keycode, t_mlxs *mlxs)
 		translation_vect = vect(0, 0, 1);
 	else if (keycode == XK_Down)
 		translation_vect = vect(0, 0, -1);
+	translation_vect = rotate_vector(translation_vect, mlxs->sc->cam.norm);
 	translate_obj(mlxs->last_selected_obj, translation_vect);
 }
 
