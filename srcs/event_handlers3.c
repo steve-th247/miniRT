@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:26:36 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/24 09:44:48 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:59:24 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	kb_event_handler_adjust_light(int keycode, t_mlxs *mlxs)
 	else if (keycode == XK_w || keycode == XK_a || keycode == XK_s
 		|| keycode == XK_d || keycode == XK_Up || keycode == XK_Down)
 		kb_event_handler_translate_light(keycode, mlxs);
+	else
+		return ;
+	render(mlxs);
 }
 
 void	kb_event_handler_adjust_light_ratio(int keycode, t_mlxs *mlxs)

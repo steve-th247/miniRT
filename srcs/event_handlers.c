@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 05:01:26 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/23 08:35:21 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:59:18 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ void	kb_event_handler_transform_obj(int keycode, t_mlxs *mlxs)
 	else if (keycode == XK_KP_Left || keycode == XK_KP_Right
 		|| keycode == XK_KP_Up || keycode == XK_KP_Down)
 		kb_event_handler_rotate_obj(keycode, mlxs);
+	else
+		return ;
+	render(mlxs);
 }
 
 void	kb_event_handler_rotate_obj(int keycode, t_mlxs *mlxs)

@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 05:54:25 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 02:51:14 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:56:45 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	kb_hook_callback(int keycode, void *param)
 			kb_event_handler_transform_obj(keycode, mlxs);
 		else
 			kb_event_handler_transform_cam(keycode, mlxs);
-		render(mlxs);
 	}
 	return (0);
 }

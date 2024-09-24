@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 06:04:31 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 02:50:06 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:59:21 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	kb_event_handler_transform_cam(int keycode, t_mlxs *mlxs)
 		|| keycode == XK_KP_Up || keycode == XK_KP_Down
 		|| keycode == XK_bracketleft || keycode == XK_bracketright)
 		kb_event_handler_rotate_cam(keycode, mlxs);
+	else
+		return ;
+	render(mlxs);
 }
 
 void	kb_event_handler_rotate_cam(int keycode, t_mlxs *mlxs)
