@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:03:12 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 14:35:29 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/24 13:30:37 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,9 @@ void	parse_camera(char *line, t_mlxs *mlxs)
 	}
 	cam.pos = parse_coord(split, 1, line, mlxs);
 	cam.norm = normalize(parse_vector(split, 2, line, mlxs));
+	cam.initial_norm = cam.norm;
 	cam.fov_deg = parse_camera_fov(split, 3, line, mlxs);
+	cam.updown_angle = 0;
 	mlxs->sc->cam = cam;
 	free_str_arr(split);
 }

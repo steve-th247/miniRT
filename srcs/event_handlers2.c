@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_handlers2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 06:04:31 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/24 07:07:27 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/24 13:20:31 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	kb_event_handler_transform_cam(int keycode, t_mlxs *mlxs)
 		kb_event_handler_rotate_cam(keycode, mlxs);
 }
 
-void	kb_event_handler_rotate_cam(int keycode, t_mlxs *mlxs)
+/*void	kb_event_handler_rotate_cam(int keycode, t_mlxs *mlxs)
 {
 	t_vect	target_z;
 
@@ -42,6 +42,47 @@ void	kb_event_handler_rotate_cam(int keycode, t_mlxs *mlxs)
 	else if (keycode == XK_KP_Down)
 		target_z = vect(0, 0.196116, 0.980581);
 	mlxs->sc->cam.norm = rotate_vector(mlxs->sc->cam.norm, target_z);
+}*/
+
+void	kb_event_handler_rotate_cam_updown(int keycode,
+	t_mlxs *mlxs, t_vect right)
+{
+	t_vect	cam_ori;
+
+	cam_ori = mlxs->sc->cam.norm;
+	if (keycode == XK_KP_Up)
+	{
+		if (mlxs->sc->cam.updown_angle - 10 < -90)
+			return ;
+		mlxs->sc->cam.norm = rotate_around_axis(cam_ori, right, -10);
+		mlxs->sc->cam.updown_angle -= 10;
+	}
+	else
+	{
+		if (mlxs->sc->cam.updown_angle + 10 > 90)
+			return ;
+		mlxs->sc->cam.norm = rotate_around_axis(cam_ori, right, 10);
+		mlxs->sc->cam.updown_angle += 10;
+	}
+}
+
+void	kb_event_handler_rotate_cam(int keycode, t_mlxs *mlxs)
+{
+	t_vect	cam_ori;
+	t_vect	world_up;
+	t_vect	right;
+	t_vect	up;
+
+	cam_ori = mlxs->sc->cam.norm;
+	world_up = vect(0, 1, 0);
+	right = normalize(cross_product(cam_ori, world_up));
+	up = normalize(cross_product(right, cam_ori));
+	if (keycode == XK_KP_Left)
+		mlxs->sc->cam.norm = rotate_around_axis(cam_ori, up, -10);
+	else if (keycode == XK_KP_Right)
+		mlxs->sc->cam.norm = rotate_around_axis(cam_ori, up, 10);
+	else if (keycode == XK_KP_Up || keycode == XK_KP_Down)
+		kb_event_handler_rotate_cam_updown(keycode, mlxs, right);
 }
 
 void	kb_event_handler_translate_cam(int keycode, t_mlxs *mlxs)
