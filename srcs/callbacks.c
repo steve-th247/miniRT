@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 05:54:25 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/24 09:38:03 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:51:14 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	kb_hook_callback(int keycode, void *param)
 		|| keycode == XK_w || keycode == XK_a || keycode == XK_s
 		|| keycode == XK_d || keycode == XK_Up || keycode == XK_Down
 		|| keycode == XK_KP_Left || keycode == XK_KP_Right
-		|| keycode == XK_KP_Up || keycode == XK_KP_Down)
+		|| keycode == XK_KP_Up || keycode == XK_KP_Down
+		|| keycode == XK_bracketleft || keycode == XK_bracketright)
 	{
 		if (mlxs->last_selected_obj == &mlxs->sc->light)
 			kb_event_handler_adjust_light(keycode, mlxs);

@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 06:04:31 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 02:14:44 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:50:06 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	kb_event_handler_transform_cam(int keycode, t_mlxs *mlxs)
 		|| keycode == XK_d || keycode == XK_Up || keycode == XK_Down)
 		kb_event_handler_translate_cam(keycode, mlxs);
 	else if (keycode == XK_KP_Left || keycode == XK_KP_Right
-		|| keycode == XK_KP_Up || keycode == XK_KP_Down)
+		|| keycode == XK_KP_Up || keycode == XK_KP_Down
+		|| keycode == XK_bracketleft || keycode == XK_bracketright)
 		kb_event_handler_rotate_cam(keycode, mlxs);
 }
 
@@ -38,6 +39,10 @@ void	kb_event_handler_rotate_cam(int keycode, t_mlxs *mlxs)
 		rotate_cam_x(&mlxs->sc->cam, 10);
 	else if (keycode == XK_KP_Down)
 		rotate_cam_x(&mlxs->sc->cam, -10);
+	else if (keycode == XK_bracketleft)
+		rotate_cam_z(&mlxs->sc->cam, 10);
+	else if (keycode == XK_bracketright)
+		rotate_cam_z(&mlxs->sc->cam, -10);
 }
 
 void	kb_event_handler_translate_cam(int keycode, t_mlxs *mlxs)
