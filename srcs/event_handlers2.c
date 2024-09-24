@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 06:04:31 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/24 07:07:27 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:14:44 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,14 @@ void	kb_event_handler_transform_cam(int keycode, t_mlxs *mlxs)
 
 void	kb_event_handler_rotate_cam(int keycode, t_mlxs *mlxs)
 {
-	t_vect	target_z;
-
-	target_z = vect(0, 0, 1);
 	if (keycode == XK_KP_Left)
-		target_z = vect(-0.196116, 0, 0.980581);
+		rotate_cam_y(&mlxs->sc->cam, -10);
 	else if (keycode == XK_KP_Right)
-		target_z = vect(0.196116, 0, 0.980581);
+		rotate_cam_y(&mlxs->sc->cam, 10);
 	else if (keycode == XK_KP_Up)
-		target_z = vect(0, -0.196116, 0.980581);
+		rotate_cam_x(&mlxs->sc->cam, 10);
 	else if (keycode == XK_KP_Down)
-		target_z = vect(0, 0.196116, 0.980581);
-	mlxs->sc->cam.norm = rotate_vector(mlxs->sc->cam.norm, target_z);
+		rotate_cam_x(&mlxs->sc->cam, -10);
 }
 
 void	kb_event_handler_translate_cam(int keycode, t_mlxs *mlxs)

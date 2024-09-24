@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 17:40:25 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/23 06:43:55 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:16:51 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 
 t_ray	init_ray(double x, double y, t_mlxs *mlxs)
 {
-	t_vect	v;
 	int		max;
 	t_ray	ray;
 
 	max = WIN_H;
 	if (WIN_W > WIN_H)
 		max = WIN_W;
-	v.x = x - WIN_W * 0.5;
-	v.y = y - WIN_H * 0.5;
-	v.z = max / (2 * tan((mlxs->sc->cam.fov_deg * 0.5) * M_PI / 180.0));
-	v = normalize(v);
-	ray.dir = rotate_vector(v, mlxs->sc->cam.norm);
+	ray.dir = add(mult(mlxs->sc->cam.u, x - WIN_W * 0.5),
+			mult(mlxs->sc->cam.v, y - WIN_W * 0.5));
+	ray.dir = add(ray.dir,
+			mult(mlxs->sc->cam.norm,
+				max / (2 * tan((mlxs->sc->cam.fov_deg * 0.5) * M_PI / 180.0))));
 	ray.pos = mlxs->sc->cam.pos;
 	return (ray);
 }

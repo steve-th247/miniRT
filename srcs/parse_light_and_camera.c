@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_light_and_camera.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:03:12 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 14:35:29 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/25 02:03:54 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	parse_camera(char *line, t_mlxs *mlxs)
 		print_err_exit("Wrong number of info for Camera.\n", &mlxs, line);
 	}
 	cam.pos = parse_coord(split, 1, line, mlxs);
-	cam.norm = normalize(parse_vector(split, 2, line, mlxs));
+	set_cam_norm(&cam, normalize(parse_vector(split, 2, line, mlxs)));
 	cam.fov_deg = parse_camera_fov(split, 3, line, mlxs);
 	mlxs->sc->cam = cam;
 	free_str_arr(split);

@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:54:15 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/24 07:18:04 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 01:55:03 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,26 @@ t_vect	cross_product(t_vect v1, t_vect v2)
 	ret.y = v1.z * v2.x - v1.x * v2.z;
 	ret.z = v1.x * v2.y - v1.y * v2.x;
 	return (ret);
+}
+
+t_vect	rotate_around_axis(t_vect vector, t_vect axis, double angle)
+{
+	t_vect	result;
+	double	cosine;
+	double	sine;
+
+	cosine = cos(angle * M_PI / 180);
+	sine = sin(angle * M_PI / 180);
+	result.x = vector.x * cosine + (1 - cosine) * axis.x * (axis.x
+			* vector.x + axis.y * vector.y + axis.z * vector.z)
+		+ sine * (axis.y * vector.z - axis.z * vector.y);
+	result.y = vector.y * cosine + (1 - cosine) * axis.y * (axis.x
+			* vector.x + axis.y * vector.y + axis.z * vector.z)
+		+ sine * (axis.z * vector.x - axis.x * vector.z);
+	result.z = vector.z * cosine + (1 - cosine) * axis.z * (axis.x
+			* vector.x + axis.y * vector.y + axis.z * vector.z)
+		+ sine * (axis.x * vector.y - axis.y * vector.x);
+	return (result);
 }
 
 // Apply rotation to p such that the z-axis in p's coordinate system coincides
