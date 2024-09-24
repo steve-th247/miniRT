@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 05:01:26 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 02:59:18 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 03:04:20 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	mouse_event_handler_resize_obj(int button, t_mlxs *mlxs)
 		diff = 1;
 	else if (button == MOUSE_SCROLL_DOWN)
 		diff = -1;
+	else
+		return ;
 	resize_obj_1(mlxs->last_selected_obj, diff);
+	render(mlxs);
 }
 
 void	kb_event_handler_transform_obj(int keycode, t_mlxs *mlxs)

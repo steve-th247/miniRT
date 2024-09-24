@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 05:54:25 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 02:56:45 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 03:04:10 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int	mouse_hook_callback(int button, int x, int y, void *param)
 	if (button == LEFT_MOUSE_BUTTON)
 		mlxs->last_selected_obj = mlxs->arr_obj_ptrs[(WIN_W * y) + x];
 	else if (button == MOUSE_SCROLL_UP || button == MOUSE_SCROLL_DOWN)
-	{
 		mouse_event_handler_resize_obj(button, mlxs);
-		render(mlxs);
-	}
 	return (0);
 }
 
