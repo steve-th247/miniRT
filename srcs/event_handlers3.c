@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:26:36 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 02:59:24 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/26 00:15:02 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,16 @@ void	kb_event_handler_translate_light(int keycode, t_mlxs *mlxs)
 
 	translation_vect = vect(0, 0, 0);
 	if (keycode == XK_w)
-		translation_vect = vect(0, -1, 0);
+		translation_vect = mult(mlxs->sc->cam.v, -1);
 	else if (keycode == XK_a)
-		translation_vect = vect(-1, 0, 0);
+		translation_vect = mult(mlxs->sc->cam.u, -1);
 	else if (keycode == XK_s)
-		translation_vect = vect(0, 1, 0);
+		translation_vect = mlxs->sc->cam.v;
 	else if (keycode == XK_d)
-		translation_vect = vect(1, 0, 0);
+		translation_vect = mlxs->sc->cam.u;
 	else if (keycode == XK_Up)
-		translation_vect = vect(0, 0, 1);
+		translation_vect = mlxs->sc->cam.norm;
 	else if (keycode == XK_Down)
-		translation_vect = vect(0, 0, -1);
-	translation_vect = rotate_vector(translation_vect, mlxs->sc->cam.norm);
+		translation_vect = mult(mlxs->sc->cam.norm, -1);
 	mlxs->sc->light.pos = add(mlxs->sc->light.pos, translation_vect);
 }

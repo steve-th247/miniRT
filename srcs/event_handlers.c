@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 05:01:26 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 23:17:33 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/26 00:14:54 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,18 +73,17 @@ void	kb_event_handler_translate_obj(int keycode, t_mlxs *mlxs)
 
 	translation_vect = vect(0, 0, 0);
 	if (keycode == XK_w)
-		translation_vect = vect(0, -1, 0);
+		translation_vect = mult(mlxs->sc->cam.v, -1);
 	else if (keycode == XK_a)
-		translation_vect = vect(-1, 0, 0);
+		translation_vect = mult(mlxs->sc->cam.u, -1);
 	else if (keycode == XK_s)
-		translation_vect = vect(0, 1, 0);
+		translation_vect = mlxs->sc->cam.v;
 	else if (keycode == XK_d)
-		translation_vect = vect(1, 0, 0);
+		translation_vect = mlxs->sc->cam.u;
 	else if (keycode == XK_Up)
-		translation_vect = vect(0, 0, 1);
+		translation_vect = mlxs->sc->cam.norm;
 	else if (keycode == XK_Down)
-		translation_vect = vect(0, 0, -1);
-	translation_vect = rotate_vector(translation_vect, mlxs->sc->cam.norm);
+		translation_vect = mult(mlxs->sc->cam.norm, -1);
 	translate_obj(mlxs->last_selected_obj, translation_vect);
 }
 
