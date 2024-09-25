@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 20:29:35 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/25 03:43:58 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 22:13:09 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,52 @@ int	quad_cylinder(t_ray *ray, t_inter *inter, t_cylinder *cylinder, t_vect X)
 	return (1);
 }
 
+double	intersect_cylinder_cap(t_ray *ray, t_cylinder *cylinder, int sign)
+{
+	t_vect	cap_center;
+	t_vect	vect;
+	double	denom;
+	double	t;
+
+	cap_center = add(cylinder->pos,
+			mult(cylinder->norm_axis, sign * cylinder->height / 2));
+	denom = dot_product(ray->dir, cylinder->norm_axis);
+	if (fabs(denom) < 1e-4)
+		return (INFINITY);
+	t = dot_product(sub(cap_center, ray->pos), cylinder->norm_axis) / denom;
+	if (t < 1e-4)
+		return (INFINITY);
+	vect = sub(add(ray->pos, mult(ray->dir, t)), cap_center);
+	if (dot_product(vect, vect) <= (cylinder->dia / 2) * (cylinder->dia / 2))
+		return (t);
+	return (INFINITY);
+}
+
 t_inter	intersect_cylinder(t_ray *ray, t_cylinder *cylinder)
 {
 	t_inter	inter;
 	t_vect	x;
+	double	dist[3];
 
 	inter.type = CYLINDER;
 	inter.obj_ptr = cylinder;
 	x = sub(ray->pos, cylinder->pos);
 	if (!quad_cylinder(ray, &inter, cylinder, x))
+		dist[0] = INFINITY;
+	else
+		dist[0] = inter.dist;
+	dist[1] = intersect_cylinder_cap(ray, cylinder, -1);
+	dist[2] = intersect_cylinder_cap(ray, cylinder, 1);
+	inter.dist = fmin(dist[0], fmin(dist[1], dist[2]));
+	if (inter.dist == INFINITY)
 		return (inter);
 	inter.point = add(ray->pos, mult(ray->dir, inter.dist));
-	inter.normal = cylinder_normal(inter.point, cylinder);
+	if (inter.dist == dist[0])
+		inter.normal = cylinder_normal(inter.point, cylinder);
+	else
+		inter.normal = cylinder->norm_axis;
+	if (inter.dist == dist[1])
+		inter.normal = mult(inter.normal, -1);
 	inter.color = cylinder->color;
 	return (inter);
 }
