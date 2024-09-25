@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 18:27:50 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 13:41:59 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 23:00:50 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 bool	is_closest(t_inter *closest, t_inter temp)
 {
-	if (temp.dist == INFINITY || temp.dist < 1e-4)
-		return (false);
-	if (closest->dist == INFINITY)
+	if (closest->dist == INFINITY && temp.dist != INFINITY && temp.dist > 1e-4)
 		return (true);
-	else if (temp.dist < closest->dist)
+	if (temp.dist < closest->dist && fabs(closest->dist - temp.dist) > 1e-4)
 		return (true);
 	return (false);
 }
