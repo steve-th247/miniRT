@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 23:09:34 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/22 18:51:54 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:31:14 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ struct s_plane
 	void	(*rotate)(t_plane *, t_vect);
 	void	(*resize_1)(t_plane *, double);
 	void	(*resize_2)(t_plane *, double);
+	int		i;
 	t_vect	pos;
 	t_vect	norm;
 	t_color	color;

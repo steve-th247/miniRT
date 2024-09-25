@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 22:57:35 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/22 21:41:17 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:31:42 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ struct s_sphere
 	void		(*rotate)(t_sphere *, t_vect);
 	void		(*resize_1)(t_sphere *, double);
 	void		(*resize_2)(t_sphere *, double);
+	int			i;
 	t_vect		pos;
 	t_color		color;
 	double		dia;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 23:01:41 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/22 18:57:08 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:49:46 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 #include <errno.h>
 #include "plane.h"
 #include "vect.h"
+#include "obj.h"
 
 t_plane	plane(t_vect pos, t_vect norm, t_color color)
 {
 	t_plane	plane;
 
+	plane.i = PLANE;
 	plane.pos = pos;
 	plane.norm = norm;
 	plane.color = color;
@@ -57,4 +59,5 @@ void	translate_plane(t_plane *plane, t_vect vector)
 void	rotate_plane(t_plane *plane, t_vect target_z)
 {
 	plane->norm = rotate_vector(plane->norm, target_z);
+	plane->pos = rotate_vector(plane->pos, target_z);
 }

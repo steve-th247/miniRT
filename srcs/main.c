@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:07:00 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/23 07:23:12 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:47:26 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	render(t_mlxs *mlxs)
 	launch_rays_from_camera(mlxs);
 	mlx_put_image_to_window(mlxs->mlx, mlxs->mlx_win, \
 	mlxs->img.img, 0, 0);
+	print_controls(mlxs);
 	return (0);
 }
 
@@ -38,6 +39,7 @@ int	main(int ac, char **av)
 		print_err_exit("./miniRT <file.rt>\n", NULL, NULL);
 	}
 	mlxs = ft_calloc(sizeof(t_mlxs), 1);
+	mlxs->last_selected_obj = NULL;
 	if (mlxs == NULL)
 		print_err_exit("Malloc mlxs failed.\n", NULL, NULL);
 	parse(av[1], mlxs);

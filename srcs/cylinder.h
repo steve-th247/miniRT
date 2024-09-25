@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 23:28:10 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/22 21:52:19 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:30:58 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ struct s_cylinder
 	void	(*rotate)(t_cylinder *, t_vect);
 	void	(*resize_1)(t_cylinder *, double);
 	void	(*resize_2)(t_cylinder *, double);
+	int		i;
 	t_vect	pos;
 	t_vect	norm_axis;
 	t_color	color;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   callbacks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 05:54:25 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 03:04:10 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:40:00 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,23 @@ int	mouse_hook_callback(int button, int x, int y, void *param)
 
 	mlxs = (t_mlxs *)param;
 	if (button == LEFT_MOUSE_BUTTON)
+	{
 		mlxs->last_selected_obj = mlxs->arr_obj_ptrs[(WIN_W * y) + x];
+		print_controls(mlxs);
+	}
 	else if (button == MOUSE_SCROLL_UP || button == MOUSE_SCROLL_DOWN)
 		mouse_event_handler_resize_obj(button, mlxs);
 	return (0);
+}
+
+bool	check_keycode(int keycode)
+{
+	return (keycode == XK_KP_Add || keycode == XK_KP_Subtract
+		|| keycode == XK_w || keycode == XK_a || keycode == XK_s
+		|| keycode == XK_d || keycode == XK_Up || keycode == XK_Down
+		|| keycode == XK_KP_Left || keycode == XK_KP_Right
+		|| keycode == XK_KP_Up || keycode == XK_KP_Down
+		|| keycode == XK_bracketleft || keycode == XK_bracketright);
 }
 
 int	kb_hook_callback(int keycode, void *param)
@@ -36,15 +49,16 @@ int	kb_hook_callback(int keycode, void *param)
 	if (keycode == XK_Escape)
 		mlx_loop_end(mlxs->mlx);
 	else if (keycode == XK_q)
+	{
 		mlxs->last_selected_obj = NULL;
+		print_controls(mlxs);
+	}
 	else if (keycode == XK_l)
+	{
 		mlxs->last_selected_obj = &mlxs->sc->light;
-	else if (keycode == XK_KP_Add || keycode == XK_KP_Subtract
-		|| keycode == XK_w || keycode == XK_a || keycode == XK_s
-		|| keycode == XK_d || keycode == XK_Up || keycode == XK_Down
-		|| keycode == XK_KP_Left || keycode == XK_KP_Right
-		|| keycode == XK_KP_Up || keycode == XK_KP_Down
-		|| keycode == XK_bracketleft || keycode == XK_bracketright)
+		print_controls(mlxs);
+	}
+	else if (check_keycode(keycode))
 	{
 		if (mlxs->last_selected_obj == &mlxs->sc->light)
 			kb_event_handler_adjust_light(keycode, mlxs);

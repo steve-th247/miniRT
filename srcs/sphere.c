@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 16:24:20 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/22 21:31:58 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:28:57 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 #include <stdio.h>
 #include <errno.h>
 #include "sphere.h"
+#include "obj.h"
 
 t_sphere	sphere(t_vect pos, double dia, t_color color)
 {
 	t_sphere	sphere;
 
+	sphere.i = SPHERE;
 	sphere.pos = pos;
 	sphere.dia = dia;
 	sphere.color = color;

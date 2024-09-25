@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 23:30:41 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/22 21:56:54 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:29:11 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 #include <stdio.h>
 #include <errno.h>
 #include "cylinder.h"
+#include "obj.h"
 
 t_cylinder	cylinder(t_vect pos, t_vect norm, t_color color,
 				double size_info[2])
 {
 	t_cylinder	cylinder;
 
+	cylinder.i = CYLINDER;
 	cylinder.pos = pos;
 	cylinder.norm_axis = norm;
 	cylinder.color = color;
