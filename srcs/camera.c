@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
+/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 19:07:32 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 02:02:53 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 10:12:40 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void	set_cam_norm(t_camera *cam, t_vect norm)
 	cam->u = cross_product(vect(0, 1, 0), cam->norm);
 	if (vect_is_equal(cam->norm, vect(0, 1, 0)))
 		cam->u = cross_product(vect(0, 0, -1), cam->norm);
+	if (vect_is_equal(cam->norm, vect(0, -1, 0)))
+		cam->u = cross_product(vect(0, 0, 1), cam->norm);
 	cam->v = cross_product(cam->norm, cam->u);
 }
