@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:09:42 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/16 17:52:44 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/25 20:38:09 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	print_err(char *msg, void *ptr)
 {
+	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(msg, 2);
 	if (ptr != NULL)
 	{
@@ -24,6 +25,7 @@ void	print_err(char *msg, void *ptr)
 
 void	print_err_exit(char *msg, t_mlxs **mlxs, char *ptr)
 {
+	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(msg, 2);
 	if (mlxs == NULL || *mlxs == NULL)
 		exit(1);

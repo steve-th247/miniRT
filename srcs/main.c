@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:07:00 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/25 19:26:43 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/25 20:38:29 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 	init_mlx(mlxs);
 	mlxs->arr_obj_ptrs = ft_calloc(WIN_H * WIN_W, sizeof(void *));
 	if (mlxs->arr_obj_ptrs == NULL)
-		print_err_exit("Malloc failed.\n", NULL, NULL);
+		print_err_exit("Malloc failed.\n", &mlxs, NULL);
 	render(mlxs);
 	init_mlx_hook(mlxs);
 	mlx_loop(mlxs->mlx);
