@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 23:30:41 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 17:29:11 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/25 23:09:51 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	translate_cylinder(t_cylinder *cyl, t_vect vector)
 	cyl->pos = add(cyl->pos, vector);
 }
 
-void	rotate_cylinder(t_cylinder *cyl, t_vect target_z)
+void	rotate_cylinder(t_cylinder *cyl, t_vect axis, double deg)
 {
-	cyl->norm_axis = rotate_vector(cyl->norm_axis, target_z);
+	cyl->norm_axis = rotate_around_axis(cyl->norm_axis, axis, deg);
 }

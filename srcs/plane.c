@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 23:01:41 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 17:49:46 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/25 23:18:43 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ void	translate_plane(t_plane *plane, t_vect vector)
 	plane->pos = add(plane->pos, vector);
 }
 
-void	rotate_plane(t_plane *plane, t_vect target_z)
+void	rotate_plane(t_plane *plane, t_vect axis, double deg)
 {
-	plane->norm = rotate_vector(plane->norm, target_z);
-	plane->pos = rotate_vector(plane->pos, target_z);
+	plane->norm = rotate_around_axis(plane->norm, axis, deg);
 }

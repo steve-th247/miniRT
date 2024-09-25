@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 05:01:26 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 04:09:23 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 23:17:33 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	kb_event_handler_transform_obj(int keycode, t_mlxs *mlxs)
 		|| keycode == XK_d || keycode == XK_Up || keycode == XK_Down)
 		kb_event_handler_translate_obj(keycode, mlxs);
 	else if (keycode == XK_KP_Left || keycode == XK_KP_Right
-		|| keycode == XK_KP_Up || keycode == XK_KP_Down)
+		|| keycode == XK_KP_Up || keycode == XK_KP_Down
+		|| keycode == XK_bracketleft || keycode == XK_bracketright)
 		kb_event_handler_rotate_obj(keycode, mlxs);
 	else
 		return ;
@@ -48,7 +49,6 @@ void	kb_event_handler_transform_obj(int keycode, t_mlxs *mlxs)
 
 void	kb_event_handler_rotate_obj(int keycode, t_mlxs *mlxs)
 {
-	t_vect	target_z;
 	t_vect	rotation_axis;
 	double	deg;
 
@@ -57,12 +57,14 @@ void	kb_event_handler_rotate_obj(int keycode, t_mlxs *mlxs)
 		rotation_axis = vect(0, 1, 0);
 	else if (keycode == XK_KP_Up || keycode == XK_KP_Down)
 		rotation_axis = vect(1, 0, 0);
+	else if (keycode == XK_bracketleft || keycode == XK_bracketright)
+		rotation_axis = vect(0, 0, 1);
 	else
 		return ;
-	if (keycode == XK_KP_Left || keycode == XK_KP_Down)
+	if (keycode == XK_KP_Left || keycode == XK_KP_Down
+		|| keycode == XK_bracketleft)
 		deg *= -1;
-	target_z = rotate_around_axis(vect(0, 0, 1), rotation_axis, deg);
-	rotate_obj(mlxs->last_selected_obj, target_z);
+	rotate_obj(mlxs->last_selected_obj, rotation_axis, deg);
 }
 
 void	kb_event_handler_translate_obj(int keycode, t_mlxs *mlxs)
