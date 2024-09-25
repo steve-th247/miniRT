@@ -16,7 +16,7 @@ void	print_plane_controls(t_plane *pl)
 {
 	printf("Currently selected : Plane\n");
 	printf("--------------------------\n\n");
-	printf("Coordinates of a point in the plane :(%.3f, %.3f, %.3f)\n",
+	printf("Coordinates of a point in the plane :(%.3f, %.3f, %.3f)\n\n",
 		pl->pos.x, pl->pos.y, pl->pos.z);
 	printf("Plane Normal :(%.3f, %.3f, %.3f)\n",
 		pl->norm.x, pl->norm.y, pl->norm.z);
@@ -24,8 +24,8 @@ void	print_plane_controls(t_plane *pl)
 
 void	print_sphere_controls(t_sphere *sp)
 {
-	printf("Use Mouse Scroll to set diameter of sphere\n");
-	printf("Currently selected : Sphere\n");
+	printf("Use Mouse Scroll to set diameter of sphere\n\n");
+	printf("Currently selected : Sphere\n\n");
 	printf("Coordinates :(%.3f, %.3f, %.3f)\n\n",
 		sp->pos.x, sp->pos.y, sp->pos.z);
 	printf("Diameter : %.3f\n", sp->dia);
@@ -35,7 +35,7 @@ void	print_cylinder_controls(t_cylinder *cy)
 {
 	printf("Set Height\n");
 	print_signs();
-	printf("Use Mouse Scroll to set diameter of cylinder\n");
+	printf("Use Mouse Scroll to set diameter of cylinder\n\n");
 	printf("Currently selected : Cylinder\n");
 	printf("-----------------------------\n\n");
 	printf("Coordinates :(%.3f, %.3f, %.3f)\n\n",
@@ -65,8 +65,7 @@ void	print_obj_controls(void *obj)
 
 void	print_controls(t_mlxs *mlxs)
 {
-	printf("\033[1J");
-	printf("\033[H\n");
+	printf("\033[1J\n");
 	if (mlxs->last_selected_obj == &mlxs->sc->light)
 		print_light_controls(mlxs->sc->light);
 	else if (mlxs->last_selected_obj != NULL)

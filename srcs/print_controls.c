@@ -53,7 +53,7 @@ void	print_light_controls(t_light l)
 	print_signs();
 	printf("Currently selected : Light\n");
 	printf("--------------------------\n\n");
-	printf("Coordinates :(%.3f, %.3f, %.3f)\n",
+	printf("Coordinates :(%.3f, %.3f, %.3f)\n\n",
 		l.pos.x, l.pos.y, l.pos.z);
 	printf("Light Brightness Ratio : %.2f\n", l.ratio);
 }

@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 05:54:25 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 17:40:00 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/25 19:30:11 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,27 @@ bool	check_keycode(int keycode)
 		|| keycode == XK_bracketleft || keycode == XK_bracketright);
 }
 
+void	select_last_obj(t_mlxs *mlxs, int keycode)
+{
+	if (keycode == XK_l)
+		mlxs->last_selected_obj = &mlxs->sc->light;
+	else
+		mlxs->last_selected_obj = NULL;
+	print_controls(mlxs);
+}
+
 int	kb_hook_callback(int keycode, void *param)
 {
 	t_mlxs	*mlxs;
 
 	mlxs = (t_mlxs *)param;
 	if (keycode == XK_Escape)
+	{
 		mlx_loop_end(mlxs->mlx);
-	else if (keycode == XK_q)
-	{
-		mlxs->last_selected_obj = NULL;
-		print_controls(mlxs);
+		printf("\033[2J\033[H");
 	}
-	else if (keycode == XK_l)
-	{
-		mlxs->last_selected_obj = &mlxs->sc->light;
-		print_controls(mlxs);
-	}
+	else if (keycode == XK_q || keycode == XK_l)
+		select_last_obj(mlxs, keycode);
 	else if (check_keycode(keycode))
 	{
 		if (mlxs->last_selected_obj == &mlxs->sc->light)
