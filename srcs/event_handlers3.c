@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:26:36 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/26 00:15:02 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/10/03 18:12:39 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	kb_event_handler_translate_light(int keycode, t_mlxs *mlxs)
 	else if (keycode == XK_d)
 		translation_vect = mlxs->sc->cam.u;
 	else if (keycode == XK_Up)
-		translation_vect = mlxs->sc->cam.norm;
+		translation_vect = mlxs->sc->cam.w;
 	else if (keycode == XK_Down)
-		translation_vect = mult(mlxs->sc->cam.norm, -1);
+		translation_vect = mult(mlxs->sc->cam.w, -1);
 	mlxs->sc->light.pos = add(mlxs->sc->light.pos, translation_vect);
 }

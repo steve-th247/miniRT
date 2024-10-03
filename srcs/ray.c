@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 17:40:25 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/25 21:43:42 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/10/03 18:12:39 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_ray	init_ray(double x, double y, t_mlxs *mlxs)
 	ray.dir = add(mult(mlxs->sc->cam.u, x - WIN_W * 0.5),
 			mult(mlxs->sc->cam.v, y - WIN_H * 0.5));
 	ray.dir = add(ray.dir,
-			mult(mlxs->sc->cam.norm,
+			mult(mlxs->sc->cam.w,
 				max / (2 * tan((mlxs->sc->cam.fov_deg * 0.5) * M_PI / 180.0))));
 	ray.pos = mlxs->sc->cam.pos;
 	return (ray);

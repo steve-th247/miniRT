@@ -69,6 +69,6 @@ void	print_cam_controls(t_camera c)
 	printf("Coordinates :(%.3f, %.3f, %.3f)\n\n",
 		c.pos.x, c.pos.y, c.pos.z);
 	printf("Camera Orientation :(%.3f, %.3f, %.3f)\n\n",
-		c.norm.x, c.norm.y, c.norm.z);
+		c.w.x, c.w.y, c.w.z);
 	printf("FOV :%d\n", (int)c.fov_deg);
 }
