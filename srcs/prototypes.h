@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:09:38 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/24 13:00:13 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/24 09:33:03 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,4 @@ void			kb_event_handler_adjust_light(int keycode, t_mlxs *mlxs);
 void			kb_event_handler_adjust_light_ratio(int keycode, t_mlxs *mlxs);
 void			kb_event_handler_translate_light(int keycode, t_mlxs *mlxs);
 
-t_vect			rotate_around_axis(t_vect dir, t_vect axis, double angle);
 #endif

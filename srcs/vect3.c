@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vect3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:54:15 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/24 13:06:20 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/24 07:18:04 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,4 @@ t_vect	rotate_vector(t_vect p, t_vect target)
 			+ rotation_axis.y * dot * (1 - target.z),
 			p.z * target.z + cross.z * sin_theta
 			+ rotation_axis.z * dot * (1 - target.z)));
-}
-
-t_vect	rotate_around_axis(t_vect dir, t_vect axis, double angle)
-{
-	t_vect	new_dir;
-	double	cosine;
-	double	sine;
-
-	cosine = cos(angle * M_PI / 180);
-	sine = sin(angle * M_PI / 180);
-	new_dir.x = dir.x * cosine + (1 - cosine) * axis.x * (axis.x
-			* dir.x + axis.y * dir.y + axis.z * dir.z)
-		+ sine * (axis.y * dir.z - axis.z * dir.y);
-	new_dir.y = dir.y * cosine + (1 - cosine) * axis.y * (axis.x
-			* dir.x + axis.y * dir.y + axis.z * dir.z)
-		+ sine * (axis.z * dir.x - axis.x * dir.z);
-	new_dir.z = dir.z * cosine + (1 - cosine) * axis.z * (axis.x
-			* dir.x + axis.y * dir.y + axis.z * dir.z)
-		+ sine * (axis.x * dir.y - axis.y * dir.x);
-	return (normalize(new_dir));
 }

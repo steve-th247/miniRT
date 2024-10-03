@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 19:03:59 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/24 13:30:22 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/14 18:16:47 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ typedef struct s_camera
 	t_vect			pos;
 	t_vect			norm;
 	unsigned char	fov_deg;
-	int				updown_angle;
-	t_vect			initial_norm;
 }	t_camera;
 
 t_camera	camera(t_vect pos, t_vect norm, unsigned char fov_deg);
