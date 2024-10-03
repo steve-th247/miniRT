@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 23:30:41 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/22 21:56:54 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 23:09:51 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 #include <stdio.h>
 #include <errno.h>
 #include "cylinder.h"
+#include "obj.h"
 
 t_cylinder	cylinder(t_vect pos, t_vect norm, t_color color,
 				double size_info[2])
 {
 	t_cylinder	cylinder;
 
+	cylinder.i = CYLINDER;
 	cylinder.pos = pos;
 	cylinder.norm_axis = norm;
 	cylinder.color = color;
@@ -57,7 +59,7 @@ void	translate_cylinder(t_cylinder *cyl, t_vect vector)
 	cyl->pos = add(cyl->pos, vector);
 }
 
-void	rotate_cylinder(t_cylinder *cyl, t_vect target_z)
+void	rotate_cylinder(t_cylinder *cyl, t_vect axis, double deg)
 {
-	cyl->norm_axis = rotate_vector(cyl->norm_axis, target_z);
+	cyl->norm_axis = rotate_around_axis(cyl->norm_axis, axis, deg);
 }

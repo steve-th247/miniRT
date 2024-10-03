@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 20:09:14 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/22 20:10:22 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 01:53:41 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_vect	normalize(t_vect v);
 
 double	dot_product(t_vect v1, t_vect v2);
 t_vect	cross_product(t_vect v1, t_vect v2);
+t_vect	rotate_around_axis(t_vect dir, t_vect axis, double angle);
 t_vect	rotate_vector(t_vect p, t_vect target);
 
 #endif

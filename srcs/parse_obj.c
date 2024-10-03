@@ -6,7 +6,7 @@
 /*   By: jyap <jyap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 20:27:51 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 14:35:54 by jyap             ###   ########.fr       */
+/*   Updated: 2024/09/25 17:28:12 by jyap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	parse_plane(char *line, t_mlxs *mlxs, t_obj *new_obj)
 	plane->pos = parse_coord(split, 1, line, mlxs);
 	plane->norm = normalize(parse_vector(split, 2, line, mlxs));
 	plane->color = parse_color(split, 3, line, mlxs);
+	plane->i = PLANE;
 	free_str_arr(split);
 }
 
@@ -49,6 +50,7 @@ void	parse_sphere(char *line, t_mlxs *mlxs, t_obj *new_obj)
 	sphere->pos = parse_coord(split, 1, line, mlxs);
 	sphere->dia = parse_dia_height(split, 2, line, mlxs);
 	sphere->color = parse_color(split, 3, line, mlxs);
+	sphere->i = SPHERE;
 	free_str_arr(split);
 }
 
@@ -71,5 +73,6 @@ void	parse_cylinder(char *line, t_mlxs *mlxs, t_obj *new_obj)
 	cylinder->dia = parse_dia_height(split, 3, line, mlxs);
 	cylinder->height = parse_dia_height(split, 4, line, mlxs);
 	cylinder->color = parse_color(split, 5, line, mlxs);
+	cylinder->i = CYLINDER;
 	free_str_arr(split);
 }

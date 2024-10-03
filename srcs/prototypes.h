@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 17:09:38 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/24 09:33:03 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 22:13:50 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,12 @@ void			kb_event_handler_zoom_cam(int keycode, t_mlxs *mlxs);
 void			kb_event_handler_adjust_light(int keycode, t_mlxs *mlxs);
 void			kb_event_handler_adjust_light_ratio(int keycode, t_mlxs *mlxs);
 void			kb_event_handler_translate_light(int keycode, t_mlxs *mlxs);
+
+void			print_mode(void);
+void			print_transform(void);
+void			print_signs(void);
+void			print_light_controls(t_light l);
+void			print_cam_controls(t_camera c);
+void			print_controls(t_mlxs *mlxs);
 
 #endif

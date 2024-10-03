@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 22:57:35 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/22 21:41:17 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 23:13:09 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ typedef struct s_sphere	t_sphere;
 struct s_sphere
 {
 	void		(*translate)(t_sphere *, t_vect);
-	void		(*rotate)(t_sphere *, t_vect);
+	void		(*rotate)(t_sphere *, t_vect, double);
 	void		(*resize_1)(t_sphere *, double);
 	void		(*resize_2)(t_sphere *, double);
+	int			i;
 	t_vect		pos;
 	t_color		color;
 	double		dia;

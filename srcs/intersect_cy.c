@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 20:29:35 by jyap              #+#    #+#             */
-/*   Updated: 2024/09/20 12:26:17 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 03:43:58 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	is_intersection_valid(t_ray *ray, t_cylinder *cy, double t)
 	p_intersection = add(ray->pos, mult(ray->dir, t));
 	d = sub(p_intersection, cy->pos);
 	m = dot_product(d, cy->norm_axis);
-	return (m >= 0 && m <= cy->height);
+	return (m >= -cy->height / 2 && m <= cy->height / 2);
 }
 
 t_vect	cylinder_normal(t_vect P, t_cylinder *cylinder)
@@ -70,8 +70,7 @@ t_inter	intersect_cylinder(t_ray *ray, t_cylinder *cylinder)
 
 	inter.type = CYLINDER;
 	inter.obj_ptr = cylinder;
-	x = vect(ray->pos.x - cylinder->pos.x, ray->pos.y - \
-	cylinder->pos.y, ray->pos.z - cylinder->pos.z);
+	x = sub(ray->pos, cylinder->pos);
 	if (!quad_cylinder(ray, &inter, cylinder, x))
 		return (inter);
 	inter.point = add(ray->pos, mult(ray->dir, inter.dist));

@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 00:29:30 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/23 00:35:22 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/09/25 23:10:13 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	translate_obj(t_generic_obj *obj, t_vect vector)
 		obj->translate(obj, vector);
 }
 
-void	rotate_obj(t_generic_obj *obj, t_vect vector)
+void	rotate_obj(t_generic_obj *obj, t_vect axis, double deg)
 {
 	if (obj != NULL && obj->rotate != NULL)
-		obj->rotate(obj, vector);
+		obj->rotate(obj, axis, deg);
 }
 
 void	resize_obj_1(t_generic_obj *obj, double diff)

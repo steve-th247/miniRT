@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:26:36 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/24 09:44:48 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/10/03 18:12:39 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	kb_event_handler_adjust_light(int keycode, t_mlxs *mlxs)
 	else if (keycode == XK_w || keycode == XK_a || keycode == XK_s
 		|| keycode == XK_d || keycode == XK_Up || keycode == XK_Down)
 		kb_event_handler_translate_light(keycode, mlxs);
+	else
+		return ;
+	render(mlxs);
 }
 
 void	kb_event_handler_adjust_light_ratio(int keycode, t_mlxs *mlxs)
@@ -46,17 +49,16 @@ void	kb_event_handler_translate_light(int keycode, t_mlxs *mlxs)
 
 	translation_vect = vect(0, 0, 0);
 	if (keycode == XK_w)
-		translation_vect = vect(0, -1, 0);
+		translation_vect = mult(mlxs->sc->cam.v, -1);
 	else if (keycode == XK_a)
-		translation_vect = vect(-1, 0, 0);
+		translation_vect = mult(mlxs->sc->cam.u, -1);
 	else if (keycode == XK_s)
-		translation_vect = vect(0, 1, 0);
+		translation_vect = mlxs->sc->cam.v;
 	else if (keycode == XK_d)
-		translation_vect = vect(1, 0, 0);
+		translation_vect = mlxs->sc->cam.u;
 	else if (keycode == XK_Up)
-		translation_vect = vect(0, 0, 1);
+		translation_vect = mlxs->sc->cam.w;
 	else if (keycode == XK_Down)
-		translation_vect = vect(0, 0, -1);
-	translation_vect = rotate_vector(translation_vect, mlxs->sc->cam.norm);
+		translation_vect = mult(mlxs->sc->cam.w, -1);
 	mlxs->sc->light.pos = add(mlxs->sc->light.pos, translation_vect);
 }
