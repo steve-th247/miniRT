@@ -6,7 +6,7 @@
 /*   By: tjien-ji <tjien-ji@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 23:01:41 by tjien-ji          #+#    #+#             */
-/*   Updated: 2024/09/25 23:18:43 by tjien-ji         ###   ########.fr       */
+/*   Updated: 2024/10/03 18:42:37 by tjien-ji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,5 @@ void	translate_plane(t_plane *plane, t_vect vector)
 void	rotate_plane(t_plane *plane, t_vect axis, double deg)
 {
 	plane->norm = rotate_around_axis(plane->norm, axis, deg);
+	plane->pos = rotate_around_axis(plane->pos, axis, deg);
 }
